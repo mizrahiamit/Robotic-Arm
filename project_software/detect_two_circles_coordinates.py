@@ -5,7 +5,7 @@ from huogh_transform_function import *
 
 def main():
     # Take a image
-    image = cv2.imread('two circles.jpg')
+    image = cv2.imread('color_img.jpg')
     image2 = image.copy()
     #---------Detect Red Objects-------------
     r_mask = get_color_mask(image,"red")
