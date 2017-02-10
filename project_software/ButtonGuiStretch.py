@@ -1,11 +1,11 @@
 import sys
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt4.QtCore import  *
+from PyQt4.QtGui import  *
 
 
 def window():
-	app = QApplication(sys.argv)
-	win = QWidget()
+    app = QApplication(sys.argv)
+    win = QWidget()
 
     start_btn = QPushButton("Start")
     pause_btn = QPushButton("Pause")
@@ -25,10 +25,9 @@ def window():
     QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
     QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
 
-
-	win.setWindowTitle("PyQt")
-	win.show()
-	sys.exit(app.exec_())
+    win.setWindowTitle("PyQt")
+    win.show()
+    sys.exit(app.exec_())
 
 
 def start_clicked():
