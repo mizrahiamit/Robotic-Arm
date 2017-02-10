@@ -28,4 +28,8 @@ with picamera.PiCamera() as camera:
     camera.start_preview()
     # Camera warm-up time
     time.sleep(2)
-    camera.capture('foo 640x480.jpg')
+    camera.capture(image,'foo 640x480.jpg')
+
+    # display the image on screen and wait for a keypress
+	cv2.imshow("Image", image)
+	cv2.waitKey(0)
