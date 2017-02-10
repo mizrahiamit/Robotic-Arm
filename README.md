@@ -22,6 +22,6 @@ Description Camera control XY Robotic arm
 - Check that bridge connection exists
 - $ssh -X pi@192.168.2.8 (bridge I.P)
 - Insert password: raspberry
-- source ~/.profile
-- workon cv
-- cd Documents/Robotic-Arm
+- $source ~/.profile
+- $workon cv
+- $cd Documents/Robotic-Arm
