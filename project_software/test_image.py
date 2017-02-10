@@ -3,7 +3,9 @@ from picamera.array import PiRGBArray
 import picamera
 import time
 import cv2
- 
+
+
+''' 
 # initialize the camera and grab a reference to the raw camera capture
 with picamera.PiCamera() as camera:
 	rawCapture = PiRGBArray(camera)
@@ -18,9 +20,9 @@ with picamera.PiCamera() as camera:
 	# display the image on screen and wait for a keypress
 	cv2.imshow("Image", image)
 	cv2.waitKey(0)
-
-#--------------------------------------------------
 '''
+#--------------------------------------------------
+
 import time
 import picamera
 
@@ -29,5 +31,4 @@ with picamera.PiCamera() as camera:
     camera.start_preview()
     # Camera warm-up time
     time.sleep(2)
-    camera.capture('foo 640x480.jpg')
-'''
+    camera.capture('two circles.jpg')
