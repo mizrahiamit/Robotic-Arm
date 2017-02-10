@@ -38,4 +38,4 @@ def stop_clicked():
 	print "Stop clicked"
 
 if __name__ == '__main__':
-window()
+	window()
