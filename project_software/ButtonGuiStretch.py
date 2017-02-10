@@ -25,14 +25,14 @@ def window():
 	sys.exit(app.exec_())
 
 
-def start_clicked():
+'''def start_clicked():
 	print "Start clicked"
 
 def pause_clicked():
 	print "Pause clicked"
 
 def stop_clicked():
-	print "Stop clicked"
+	print "Stop clicked"'''
 
 if __name__ == '__main__':
 window()
