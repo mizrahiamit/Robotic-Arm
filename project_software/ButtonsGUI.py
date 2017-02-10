@@ -14,15 +14,15 @@ def window():
 
 	pause_btn=QPushButton(win)
 	pause_btn.setText("Pause")
-	pause_btn.move(100,20)
+	pause_btn.move(150,20)
 	QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
 
 	stop_btn=QPushButton(win)
 	stop_btn.setText("Pause")
-	stop_btn.move(150,20)
+	stop_btn.move(250,20)
 	QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
 
-	win.setGeometry(10,10,250,100)
+	win.setGeometry(10,10,500,100)
 	win.setWindowTitle("PyQt")
 	win.show()
 	sys.exit(app.exec_())
