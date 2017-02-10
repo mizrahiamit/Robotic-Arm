@@ -22,8 +22,8 @@ def main():
         print circles
         
         cv2.imwrite('detected red circles.jpg',image2)
-    #---------Detect Blue Objects-------------
-    b_mask = get_color_mask(image,"blue")
+    #---------Detect Green Objects-------------
+    b_mask = get_color_mask(image,"green")
 
     #---------Detect Blue circle-------------
     circles = return_circles_values(b_mask)
