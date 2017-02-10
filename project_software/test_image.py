@@ -1,25 +1,26 @@
-'''# import the necessary packages
+# import the necessary packages
 from picamera.array import PiRGBArray
-from picamera import PiCamera
+import picamera
 import time
 import cv2
  
 # initialize the camera and grab a reference to the raw camera capture
-camera = PiCamera()
-rawCapture = PiRGBArray(camera)
+with picamera.PiCamera() as camera:
+	rawCapture = PiRGBArray(camera)
  
-# allow the camera to warmup
-time.sleep(0.1)
+	# allow the camera to warmup
+	time.sleep(2)
  
-# grab an image from the camera
-camera.capture(rawCapture, format="bgr")
-image = rawCapture.array
+	# grab an image from the camera
+	camera.capture(rawCapture, format="bgr")
+	image = rawCapture.array
  
-# display the image on screen and wait for a keypress
-cv2.imshow("Image", image)
-cv2.waitKey(0)'''
+	# display the image on screen and wait for a keypress
+	cv2.imshow("Image", image)
+	cv2.waitKey(0)
 
 #--------------------------------------------------
+'''
 import time
 import picamera
 
@@ -28,10 +29,5 @@ with picamera.PiCamera() as camera:
     camera.start_preview()
     # Camera warm-up time
     time.sleep(2)
-    #camera.capture('foo 640x480.jpg')
-
-    camera.capture(image_array,'foo 640x480.jpg')
-    image = image_array.array
-    # display the image on screen and wait for a keypress
-	cv2.imshow("Image", image)
-	cv2.waitKey(0)
+    camera.capture('foo 640x480.jpg')
+'''
