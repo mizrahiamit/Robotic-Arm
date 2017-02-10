@@ -11,13 +11,19 @@ def window():
     pause_btn = QPushButton("Pause")
     stop_btn = QPushButton("Stop")
 
-    vbox = QVBoxLayout()
-    vbox.addWidget(start_btn)
-    vbox.addStretch()
-    vbox.addWidget(pause_btn)
-    vbox.addStretch()
-    vbox.addWidget(stop_btn)
-    win.setLayout(vbox)
+    box = QHBoxLayout()
+
+    box.addWidget(start_btn)
+    box.addStretch()
+    box.addWidget(pause_btn)
+    box.addStretch()
+    box.addWidget(stop_btn)
+
+    win.setLayout(box)
+
+    start_btn.clicked.connect(start_clicked)
+    QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
+    QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
 
 
 	win.setWindowTitle("PyQt")
@@ -25,14 +31,14 @@ def window():
 	sys.exit(app.exec_())
 
 
-'''def start_clicked():
+def start_clicked():
 	print "Start clicked"
 
 def pause_clicked():
 	print "Pause clicked"
 
 def stop_clicked():
-	print "Stop clicked"'''
+	print "Stop clicked"
 
 if __name__ == '__main__':
-window()
+    window()
