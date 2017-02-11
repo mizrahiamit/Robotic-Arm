@@ -5,7 +5,7 @@ from PyQt4.QtCore import *
 
 def window():
 	app = QApplication(sys.argv)
-	w = QWidget()
+	
 
 	msg=QMessageBox()
 	msg.setIcon(QMessageBox.Information)
@@ -20,8 +20,7 @@ def window():
 
 
 	
-	w.setWindowTitle("PyQt Dialog demo")
-	w.show()
+	
 	sys.exit(app.exec_())
 
 
