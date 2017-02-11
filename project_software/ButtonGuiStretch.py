@@ -9,18 +9,23 @@ def window():
 
     #---------------------------------------------------
     # Adding Start, Pause & Stop buttons
+    fbox = QFormLayout()
+    hbox = QHBoxLayout()
+    vbox = QVBoxLayout()
+    
     start_btn = QPushButton("Start")
     pause_btn = QPushButton("Pause")
     stop_btn = QPushButton("Stop")
 
-    hbox = QHBoxLayout()
-    vbox = QVBoxLayout()
+    '''
 
     hbox.addWidget(start_btn)
     hbox.addStretch()
     hbox.addWidget(pause_btn)
     hbox.addStretch()
     hbox.addWidget(stop_btn)
+    '''
+    fbox.addRow(start_btn,pause_btn,stop_btn)
 
     start_btn.clicked.connect(start_clicked)
     QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
@@ -29,7 +34,7 @@ def window():
     vbox.addStretch()
     #---------------------------------------------------
     # Adding inputs for XY coordinates
-    fbox = QFormLayout()
+    
     
 
     #l_x=QLabel("X_target =")
@@ -46,7 +51,7 @@ def window():
     
 
     vbox.addStretch()
-    
+
     fbox.addRow(QLabel("X_target ="),addx)
     fbox.addRow(QLabel("Y_target ="),addy)
     
