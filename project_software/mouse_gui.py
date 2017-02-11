@@ -105,9 +105,9 @@ class Form(QDialog):
 
     def getPos(self, event):
         x = event.pos().x()
-        self.addx.setText(x)
+        self.addx.setText(str(x))
         y = event.pos().y()
-        self.addy.setText(y)
+        self.addy.setText(str(y))
         print ("x = ", x,"y = ", y)
         
 '''
