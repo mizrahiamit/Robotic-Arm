@@ -12,9 +12,10 @@ Description Camera control XY Robotic arm
 - Writing a program to find colored circles on a arm (coordinates)
 - Writing a GUI
 - Display a picture in the GUI
-- ------------------------Next-------------------------------------
 - Get pixel coordinate by clicking right click on the mouse
+- ------------------------Next-------------------------------------
 - Plan Block diagram to the software
+- Read new image every n sec
 
 # Start Raspberry pi
 - Open Terminal
