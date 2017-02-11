@@ -52,13 +52,16 @@ def window():
 
 	grid.addWidget(status_msg,4,1)
 
-	win.setLayout(grid)
+	
 	#------------------------------------------
-
+	vbox=QVBoxLayout()
 	vbox.addStretch()
 	vbox.addWidget(l2)
+	win.setLayout(vbox)
+	#------------------------------------------
 
 
+	win.setLayout(grid)
 	#win.setGeometry(100,100,200,100)
 	win.setWindowTitle("Camera Control XY Robotic Arm")
 	win.show()
