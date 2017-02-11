@@ -6,7 +6,7 @@ class Form(QDialog):
     def __init__(self, parent=None):
         super(Form, self).__init__(parent)
 
-        win = QWidget()
+       
 
 
         #------------------------------------------
@@ -14,17 +14,17 @@ class Form(QDialog):
         self.act_msg.setObjectName("act_msg")
         self.act_msg.setText("Stand by")
         #------------------------------------------
-        self.start_btn= QPushButton(win)
+        self.start_btn= QPushButton()
         self.start_btn.setText("Start")
         
         self.start_btn.clicked.connect(start_clicked)
 
-        self.pause_btn=QPushButton(win)
+        self.pause_btn=QPushButton()
         self.pause_btn.setText("Pause")
         
         QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
 
-        self.stop_btn=QPushButton(win)
+        self.stop_btn=QPushButton()
         self.stop_btn.setText("Stop")
         
         QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
@@ -73,10 +73,10 @@ class Form(QDialog):
 
 
 
-        win.setLayout(grid)
+        self.setLayout(grid)
         #win.setGeometry(x,y,width,height)
-        win.setGeometry(100,100,600,350)
-        win.setWindowTitle("Camera Control XY Robotic Arm")
+        self.setGeometry(100,100,600,350)
+        self.setWindowTitle("Camera Control XY Robotic Arm")
 
 
 
