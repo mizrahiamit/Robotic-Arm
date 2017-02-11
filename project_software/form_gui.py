@@ -22,12 +22,12 @@ class Form(QDialog):
         self.pause_btn=QPushButton()
         self.pause_btn.setText("Pause")
         
-        self.QObject.connect(pause_btn,SIGNAL("clicked()"),self.pause_clicked)
+        self.connect(self.pause_btn,SIGNAL("clicked()"),self.pause_clicked)
 
         self.stop_btn=QPushButton()
         self.stop_btn.setText("Stop")
         
-        self.QObject.connect(stop_btn,SIGNAL("clicked()"),self.stop_clicked)
+        self.connect(self.stop_btn,SIGNAL("clicked()"),self.stop_clicked)
         #------------------------------------------
         self.addx = QLineEdit()
         self.addy = QLineEdit()
