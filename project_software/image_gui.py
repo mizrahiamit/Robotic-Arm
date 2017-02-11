@@ -32,6 +32,7 @@ def window():
     QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
 
     vbox.addStretch()
+    '''
     #---------------------------------------------------
     # Adding inputs for XY coordinates
     
@@ -39,7 +40,7 @@ def window():
 
     #l_x=QLabel("X_target =")
     #l_y=QLabel("Y_target =")
-'''
+
     addx = QLineEdit()
     addy = QLineEdit()
 
@@ -56,10 +57,11 @@ def window():
     fbox.addRow(QLabel("Y_target ="),addy)
     
     vbox.addStretch()
+
 '''
     #---------------------------------------------------
     # Adding image
-    l3=QLabel()
+    l3 = QLabel()
     l3.setPixmap(QPixmap("detected circles.jpg"))
     vbox.addStretch()
     vbox.addWidget(l3)
