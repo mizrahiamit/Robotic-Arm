@@ -41,16 +41,18 @@ def window():
 
 	grid.addWidget(act_msg,1,1)
 
-	grid.addWidget(start_btn,2,1)
-	grid.addWidget(pause_btn,2,2)
-	grid.addWidget(stop_btn,2,3)
+	grid.addWidget(start_btn,2,1,1,2)
+	grid.addWidget(pause_btn,2,2,1,2)
+	grid.addWidget(stop_btn,2,3,1,2)
 
-	grid.addWidget(QLabel("X_target ="),3,1)
+	grid.addWidget(QLabel("X_target ="),3,1,)
 	grid.addWidget(addx,3,2)
 	grid.addWidget(QLabel("Y_target ="),3,3)
 	grid.addWidget(addy,3,4)
 
 	grid.addWidget(status_msg,4,1)
+
+	#grid.addWidget(l2,5,1)
 
 	'''
 	#------------------------------------------
