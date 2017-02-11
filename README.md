@@ -10,9 +10,9 @@ Description Camera control XY Robotic arm
 - Install Picamera
 - Writing a program to take a picture
 - Writing a program to find colored circles on a arm (coordinates)
-- ------------------------Next-------------------------------------
 - Writing a GUI
 - Display a picture in the GUI
+- ------------------------Next-------------------------------------
 - Get pixel coordinate by clicking right click on the mouse
 - Plan Block diagram to the software
 
