@@ -1,11 +1,11 @@
 
-Action messages: 
+#Action messages: 
 - Stand by
 - Please choose coordinates
 - Please press start
 - Waiting for command
 
-Status messages: 
+#Status messages: 
 - Stand by
 - Running
 - Paused
