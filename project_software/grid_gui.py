@@ -51,9 +51,11 @@ def window():
 
 	row=row+1
 	grid.addWidget(QLabel("X_target ="),row,1,1,1)
-	grid.addWidget(addx,row,2,1,1)
-	grid.addWidget(QLabel("Y_target ="),row,3,1,1)
-	grid.addWidget(addy,row,4)
+	grid.addWidget(QLabel("Y_target ="),row,2,1,1)
+
+	row=row+1
+	grid.addWidget(addx,row,1,1,1)
+	grid.addWidget(addy,row,2,1,1)
 
 	row=row+1
 	grid.addWidget(QLabel("Status message"),row,1,1,4)
@@ -65,7 +67,7 @@ def window():
 	grid.addWidget(QLabel("ROI image"),row,1,1,4)
 
 	row=row+1
-	grid.addWidget(l2,row,1,4,3)
+	grid.addWidget(l2,row,1,8,6)
 
 
 
