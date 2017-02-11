@@ -52,7 +52,7 @@ def window():
 
 	grid.addWidget(status_msg,4,1,1,4)
 
-	#grid.addWidget(l2,5,1)
+	grid.addWidget(l2,5,1,8,6)
 
 	'''
 	#------------------------------------------
@@ -65,7 +65,8 @@ def window():
 
 
 	win.setLayout(grid)
-	win.setGeometry(100,100,400,1000)
+	#win.setGeometry(x,y,width,height)
+	win.setGeometry(100,100,600,800)
 	win.setWindowTitle("Camera Control XY Robotic Arm")
 	win.show()
 	sys.exit(app.exec_())
