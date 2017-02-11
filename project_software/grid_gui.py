@@ -51,11 +51,9 @@ def window():
 
 	row=row+1
 	grid.addWidget(QLabel("X_target ="),row,1,1,1)
-	grid.addWidget(QLabel("Y_target ="),row,2,1,1)
-
-	row=row+1
-	grid.addWidget(addx,row,1,1,1)
-	grid.addWidget(addy,row,2,1,1)
+	grid.addWidget(addx,row,2,1,1)
+	grid.addWidget(QLabel("Y_target ="),row,3,1,1)
+	grid.addWidget(addy,row,4,1,1)
 
 	row=row+1
 	grid.addWidget(QLabel("Status message"),row,1,1,4)
@@ -73,7 +71,7 @@ def window():
 
 	win.setLayout(grid)
 	#win.setGeometry(x,y,width,height)
-	win.setGeometry(100,100,550,600)
+	win.setGeometry(100,100,600,400)
 	win.setWindowTitle("Camera Control XY Robotic Arm")
 	win.show()
 	sys.exit(app.exec_())
