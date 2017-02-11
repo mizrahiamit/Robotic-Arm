@@ -65,7 +65,7 @@ def window():
 
 
 	win.setLayout(grid)
-	win.setGeometry(100,100,400,300)
+	win.setGeometry(100,100,400,1000)
 	win.setWindowTitle("Camera Control XY Robotic Arm")
 	win.show()
 	sys.exit(app.exec_())
