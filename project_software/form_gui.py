@@ -44,7 +44,7 @@ class Form(QDialog):
         self.status_msg.setText("Stand by")
         #------------------------------------------
         self.l2=QtGui.QLabel()
-        self.l2.setPixmap(QPixmap("detected circles.jpg"))
+        self.l2.setPixmap(QtGui.QPixmap("detected circles.jpg"))
         #------------------------------------------
         row = 1
         
@@ -61,19 +61,19 @@ class Form(QDialog):
         grid.addWidget(self.stop_btn,row,3,1,1)
 
         row=row+1
-        grid.addWidget(QLabel("X_target ="),row,1,1,1)
+        grid.addWidget(QtGui.QLabel("X_target ="),row,1,1,1)
         grid.addWidget(self.addx,row,2,1,1)
-        grid.addWidget(QLabel("Y_target ="),row,3,1,1)
+        grid.addWidget(QtGui.QLabel("Y_target ="),row,3,1,1)
         grid.addWidget(self.addy,row,4,1,1)
 
         row=row+1
-        grid.addWidget(QLabel("Status message"),row,1,1,4)
+        grid.addWidget(QtGui.QLabel("Status message"),row,1,1,4)
 
         row=row+1
         grid.addWidget(self.status_msg,row,1,1,4)
 
         row=row+1
-        grid.addWidget(QLabel("ROI image"),row,1,1,4)
+        grid.addWidget(QtGui.QLabel("ROI image"),row,1,1,4)
 
         row=row+1
         grid.addWidget(self.l2,row,1,8,6)
