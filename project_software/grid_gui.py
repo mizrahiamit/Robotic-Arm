@@ -32,13 +32,12 @@ def window():
 	#------------------------------------------
 	addx = QLineEdit()
 	addy = QLineEdit()
-    #------------------------------------------
-    status_msg = QLineEdit()
-    #------------------------------------------
-    l2.setPixmap(QPixmap("detected circles.jpg"))
-    #------------------------------------------
+	#------------------------------------------
+	status_msg = QLineEdit()
+	#------------------------------------------
+	l2.setPixmap(QPixmap("detected circles.jpg"))
+	#------------------------------------------
 
-	
 	vbox=QVBoxLayout()
     vbox.addWidget(l1)
     vbox.addStretch()
