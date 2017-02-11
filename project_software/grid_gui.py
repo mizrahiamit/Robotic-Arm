@@ -67,19 +67,11 @@ def window():
 	row=row+1
 	grid.addWidget(l2,row,1,8,6)
 
-	'''
-	#------------------------------------------
-	vbox=QVBoxLayout()
-	vbox.addStretch()
-	vbox.addWidget(l2)
-	win.setLayout(vbox)
-	#------------------------------------------
-	'''
 
 
 	win.setLayout(grid)
 	#win.setGeometry(x,y,width,height)
-	win.setGeometry(100,100,600,800)
+	win.setGeometry(100,100,550,600)
 	win.setWindowTitle("Camera Control XY Robotic Arm")
 	win.show()
 	sys.exit(app.exec_())
