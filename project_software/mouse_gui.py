@@ -45,6 +45,8 @@ class Form(QDialog):
         #------------------------------------------
         self.l2=QtGui.QLabel()
         self.l2.setPixmap(QtGui.QPixmap("detected circles.jpg"))
+        #Get pixel coordinates by right click on the mouse
+        self.l2.mousePressEvent = self.getPos
         #------------------------------------------
         row = 1
         
@@ -101,12 +103,15 @@ class Form(QDialog):
         self.status_msg.setText("Stop clicked")
         print "Stop clicked"
 
+    def getPos(self, event):
+        x = event.pos().x()
+        y = event.pos().y()
+        print ("x = ", x,"y = ", y)
+        
+'''
     def mousePressEvent(self, QMouseEvent):
         print QMouseEvent.pos()
-
-    def mouseReleaseEvent(self, QMouseEvent):
-        cursor =QtGui.QCursor()
-        print cursor.pos()
+'''
 
 
 app = QApplication(sys.argv)
