@@ -81,15 +81,12 @@ def window():
 
 
 def start_clicked():
-	status_msg.setText("Start clicked")
 	print "Start clicked"
 
 def pause_clicked():
-	status_msg.setText("Pause clicked")
 	print "Pause clicked"
 
 def stop_clicked():
-	status_msg.setText("Stop clicked")
 	print "Stop clicked"
 
 if __name__ == '__main__':
