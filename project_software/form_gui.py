@@ -17,17 +17,17 @@ class Form(QDialog):
         self.start_btn= QPushButton()
         self.start_btn.setText("Start")
         
-        self.start_btn.clicked.connect(start_clicked)
+        self.start_btn.clicked.connect(self.start_clicked)
 
         self.pause_btn=QPushButton()
         self.pause_btn.setText("Pause")
         
-        QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
+        QObject.connect(pause_btn,SIGNAL("clicked()"),self.pause_clicked)
 
         self.stop_btn=QPushButton()
         self.stop_btn.setText("Stop")
         
-        QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
+        QObject.connect(stop_btn,SIGNAL("clicked()"),self.stop_clicked)
         #------------------------------------------
         self.addx = QLineEdit()
         self.addy = QLineEdit()
@@ -82,15 +82,15 @@ class Form(QDialog):
 
         self.setWindowTitle("Learning")
 
-    def start_clicked():
+    def start_clicked(self):
         self.status_msg("Start clicked")
         print "Start clicked"
 
-    def pause_clicked():
+    def pause_clicked(self):
         self.status_msg("Pause clicked")
         print "Pause clicked"
 
-    def stop_clicked():
+    def stop_clicked(self):
         self.status_msg("Stop clicked")
         print "Stop clicked"
 
