@@ -17,29 +17,29 @@ class Form(QDialog):
 
 
         #------------------------------------------
-        self.act_msg = QLineEdit()
+        self.act_msg = QtGui.QLineEdit()
         self.act_msg.setObjectName("act_msg")
         self.act_msg.setText("Stand by")
         #------------------------------------------
-        self.start_btn= QPushButton()
+        self.start_btn= QtGui.QPushButton()
         self.start_btn.setText("Start")
         
         self.start_btn.clicked.connect(self.start_clicked)
 
-        self.pause_btn=QPushButton()
+        self.pause_btn=QtGui.QPushButton()
         self.pause_btn.setText("Pause")
         
         self.connect(self.pause_btn,SIGNAL("clicked()"),self.pause_clicked)
 
-        self.stop_btn=QPushButton()
+        self.stop_btn=QtGui.QPushButton()
         self.stop_btn.setText("Stop")
         
         self.connect(self.stop_btn,SIGNAL("clicked()"),self.stop_clicked)
         #------------------------------------------
-        self.addx = QLineEdit()
-        self.addy = QLineEdit()
+        self.addx = QtGui.QLineEdit()
+        self.addy = QtGui.QLineEdit()
         #------------------------------------------
-        self.status_msg = QLineEdit()
+        self.status_msg = QtGui.QLineEdit()
         self.status_msg.setObjectName("status_msg")
         self.status_msg.setText("Stand by")
         #------------------------------------------
@@ -48,9 +48,9 @@ class Form(QDialog):
         #------------------------------------------
         row = 1
         
-        grid=QGridLayout()
+        grid=QtGui.QGridLayout()
 
-        grid.addWidget(QLabel("Action message"),row,1,1,4)
+        grid.addWidget(QtGui.QLabel("Action message"),row,1,1,4)
 
         row=row+1
         grid.addWidget(self.act_msg,row,1,1,4)
