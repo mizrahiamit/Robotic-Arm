@@ -35,7 +35,7 @@ def window():
     #---------------------------------------------------
     # Adding inputs for XY coordinates
     
-    
+ '''   
 
     #l_x=QLabel("X_target =")
     #l_y=QLabel("Y_target =")
@@ -56,7 +56,7 @@ def window():
     fbox.addRow(QLabel("Y_target ="),addy)
     
     vbox.addStretch()
-
+'''
 
     win.setLayout(fbox)
 
