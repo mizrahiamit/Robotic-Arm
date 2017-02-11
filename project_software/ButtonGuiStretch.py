@@ -17,15 +17,15 @@ def window():
     pause_btn = QPushButton("Pause")
     stop_btn = QPushButton("Stop")
 
-    '''
+    
 
     hbox.addWidget(start_btn)
     hbox.addStretch()
     hbox.addWidget(pause_btn)
     hbox.addStretch()
     hbox.addWidget(stop_btn)
-    '''
-    fbox.addRow(start_btn,pause_btn,stop_btn)
+    
+    
 
     start_btn.clicked.connect(start_clicked)
     QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
