@@ -39,7 +39,7 @@ def window():
 
     #l_x=QLabel("X_target =")
     #l_y=QLabel("Y_target =")
-
+'''
     addx = QLineEdit()
     addy = QLineEdit()
 
@@ -56,6 +56,7 @@ def window():
     fbox.addRow(QLabel("Y_target ="),addy)
     
     vbox.addStretch()
+'''
     #---------------------------------------------------
     # Adding image
     l3=QLabel()
