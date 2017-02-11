@@ -35,7 +35,7 @@ def window():
 	l2=QLabel()
 	l2.setPixmap(QPixmap("detected circles.jpg"))
 	#------------------------------------------
-    row = 1
+	row = 1
 	
 	grid=QGridLayout()
 
