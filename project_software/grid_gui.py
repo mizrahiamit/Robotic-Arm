@@ -52,13 +52,14 @@ def window():
 
 	grid.addWidget(status_msg,4,1)
 
-	
+	'''
 	#------------------------------------------
 	vbox=QVBoxLayout()
 	vbox.addStretch()
 	vbox.addWidget(l2)
 	win.setLayout(vbox)
 	#------------------------------------------
+	'''
 
 
 	win.setLayout(grid)
