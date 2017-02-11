@@ -13,7 +13,7 @@ def window():
     l3=QLabel()
     l4=QLabel()
     
-    l1.setText("Hello World")
+    l1.setText("Camera Control XY Robotic Arm")
     l4.setText("<A href='www.TutorialsPoint.com'>TutorialsPoint</a>")
     l2.setText("<a href='#'>welcome to Python GUI Programming</a>")
     
@@ -26,11 +26,32 @@ def window():
     
     vbox.addWidget(l1)
     vbox.addStretch()
+    #----------------------------------------
+    start_btn = QPushButton("Start")
+    pause_btn = QPushButton("Pause")
+    stop_btn = QPushButton("Stop")
+
+    hbox = QHBoxLayout()
+    
+    hbox.addWidget(start_btn)
+    hbox.addStretch()
+    hbox.addWidget(pause_btn)
+    hbox.addStretch()
+    hbox.addWidget(stop_btn)
+    
+    vbox.addStretch()
+    #----------------------------------------
     vbox.addWidget(l2)
     vbox.addStretch()
     vbox.addWidget(l3)
     vbox.addStretch()
     vbox.addWidget(l4)
+
+    #----------------------------------------
+    start_btn.clicked.connect(start_clicked)
+    QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
+    QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
+    #----------------------------------------
     
     l1.setOpenExternalLinks(True)
     l4.linkActivated.connect(clicked)
@@ -48,6 +69,15 @@ def hovered():
     print "hovering"
 def clicked():
     print "clicked"
+
+def start_clicked():
+    print "Start clicked"
+
+def pause_clicked():
+    print "Pause clicked"
+
+def stop_clicked():
+    print "Stop clicked"
 
 if __name__ == '__main__':
     window()
