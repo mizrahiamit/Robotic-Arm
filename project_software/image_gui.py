@@ -26,32 +26,13 @@ def window():
     
     vbox.addWidget(l1)
     vbox.addStretch()
-    #----------------------------------------
-    start_btn = QPushButton("Start")
-    pause_btn = QPushButton("Pause")
-    stop_btn = QPushButton("Stop")
-
-    hbox = QHBoxLayout()
-    
-    hbox.addWidget(start_btn)
-    hbox.addStretch()
-    hbox.addWidget(pause_btn)
-    hbox.addStretch()
-    hbox.addWidget(stop_btn)
-    
-    vbox.addStretch()
-    #----------------------------------------
     vbox.addWidget(l2)
     vbox.addStretch()
     vbox.addWidget(l3)
     vbox.addStretch()
     vbox.addWidget(l4)
 
-    #----------------------------------------
-    start_btn.clicked.connect(start_clicked)
-    QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
-    QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
-    #----------------------------------------
+
     
     l1.setOpenExternalLinks(True)
     l4.linkActivated.connect(clicked)
