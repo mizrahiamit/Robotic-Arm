@@ -36,7 +36,7 @@ class Form(QDialog):
         self.status_msg.setObjectName("status_msg")
         self.status_msg.setText("Stand by")
         #------------------------------------------
-        self.l2=QLabel()
+        self.l2=QtGui.QLabel()
         self.l2.setPixmap(QPixmap("detected circles.jpg"))
         #------------------------------------------
         row = 1
