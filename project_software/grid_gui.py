@@ -10,7 +10,8 @@ def window():
 
 	#------------------------------------------
 	act_msg = QLineEdit()
-
+	act_msg.setObjectName("act_msg")
+	act_msg.setText("Stand by")
 	#------------------------------------------
 	start_btn= QPushButton(win)
 	start_btn.setText("Start")
@@ -31,6 +32,8 @@ def window():
 	addy = QLineEdit()
 	#------------------------------------------
 	status_msg = QLineEdit()
+	status_msg.setObjectName("status_msg")
+	status_msg.setText("Stand by")
 	#------------------------------------------
 	l2=QLabel()
 	l2.setPixmap(QPixmap("detected circles.jpg"))
@@ -78,12 +81,15 @@ def window():
 
 
 def start_clicked():
+	status_msg.setText("Start clicked")
 	print "Start clicked"
 
 def pause_clicked():
+	status_msg.setText("Pause clicked")
 	print "Pause clicked"
 
 def stop_clicked():
+	status_msg.setText("Stop clicked")
 	print "Stop clicked"
 
 if __name__ == '__main__':
