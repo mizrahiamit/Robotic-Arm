@@ -31,7 +31,7 @@ def window():
 	QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
 	#------------------------------------------
 	addx = QLineEdit()
-    addy = QLineEdit()
+	addy = QLineEdit()
     #------------------------------------------
     status_msg = QLineEdit()
     #------------------------------------------
