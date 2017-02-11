@@ -39,12 +39,11 @@ def window():
 	#------------------------------------------
 
 	vbox=QVBoxLayout()
-    vbox.addWidget(l1)
-    vbox.addStretch()
-    vbox.addWidget(act_msg)
-    vbox.addStretch()
-    
-    
+	vbox.addWidget(l1)
+	vbox.addStretch()
+	vbox.addWidget(act_msg)
+	vbox.addStretch()
+
 
 	grid=QGridLayout()
 
@@ -57,26 +56,19 @@ def window():
 	grid.addWidget(addy,2,3)
 	grid.addWidget(QLabel("X_target ="),2,4)
 
-    win.setLayout(grid)
+	win.setLayout(grid)
 
-    vbox.addStretch()
-    vbox.addWidget(status_msg)
-    vbox.addStretch()
-    vbox.addWidget(l2)
+	vbox.addStretch()
+	vbox.addWidget(status_msg)
+	vbox.addStretch()
+	vbox.addWidget(l2)
 
+	win.setLayout(vbox)
 
-    win.setLayout(vbox)
-	'''
-	for i in range(1,5):
-		for j in range(1,5):
-			grid.addWidget(QPushButton("B"+str(i)+str(j)),i,j)
-	'''
-	
-	
 	#win.setGeometry(100,100,200,100)
 	win.setWindowTitle("PyQt")
-    win.show()
-    sys.exit(app.exec_())
+	win.show()
+	sys.exit(app.exec_())
 
 
 def start_clicked():
