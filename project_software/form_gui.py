@@ -90,15 +90,15 @@ class Form(QDialog):
         self.setWindowTitle("Learning")
 
     def start_clicked(self):
-        self.status_msg("Start clicked")
+        self.status_msg.setText("Start clicked")
         print "Start clicked"
 
     def pause_clicked(self):
-        self.status_msg("Pause clicked")
+        self.status_msg.setText("Pause clicked")
         print "Pause clicked"
 
     def stop_clicked(self):
-        self.status_msg("Stop clicked")
+        self.status_msg.setText("Stop clicked")
         print "Stop clicked"
 
 
