@@ -45,11 +45,10 @@ def window():
     #fbox.addRow(l_y,hbox)
     
 
-    hbox.addStretch()
-    fbox.addRow(QLabel("X_target ="),hbox,addx,hbox)
-    #fbox.addRow(addx,hbox)
-    fbox.addRow(QLabel("Y_target ="),hbox,addy,hbox)
-    #fbox.addRow(addy,hbox)
+    vbox.addStretch()
+    
+    fbox.addRow(QLabel("X_target ="),addx)
+    fbox.addRow(QLabel("Y_target ="),addy)
     
     vbox.addStretch()
 
