@@ -41,9 +41,9 @@ def window():
 
 	grid.addWidget(act_msg,1,1,1,4)
 
-	grid.addWidget(start_btn,2,1,1,1)
-	grid.addWidget(pause_btn,2,2,1,1)
-	grid.addWidget(stop_btn,2,3,1,1)
+	grid.addWidget(start_btn,2,1,1,2)
+	grid.addWidget(pause_btn,2,2,1,2)
+	grid.addWidget(stop_btn,2,3,1,2)
 
 	grid.addWidget(QLabel("X_target ="),3,1,1,1)
 	grid.addWidget(addx,3,2,1,1)
