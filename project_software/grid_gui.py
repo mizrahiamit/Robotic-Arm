@@ -39,18 +39,18 @@ def window():
 	
 	grid=QGridLayout()
 
-	grid.addWidget(act_msg,1,1)
+	grid.addWidget(act_msg,1,1,1,4)
 
-	grid.addWidget(start_btn,2,1,1,2)
-	grid.addWidget(pause_btn,2,2,1,2)
-	grid.addWidget(stop_btn,2,3,1,2)
+	grid.addWidget(start_btn,2,1,1,1)
+	grid.addWidget(pause_btn,2,2,1,1)
+	grid.addWidget(stop_btn,2,3,1,1)
 
-	grid.addWidget(QLabel("X_target ="),3,1,)
-	grid.addWidget(addx,3,2)
-	grid.addWidget(QLabel("Y_target ="),3,3)
+	grid.addWidget(QLabel("X_target ="),3,1,1,1)
+	grid.addWidget(addx,3,2,1,1)
+	grid.addWidget(QLabel("Y_target ="),3,3,1,1)
 	grid.addWidget(addy,3,4)
 
-	grid.addWidget(status_msg,4,1)
+	grid.addWidget(status_msg,4,1,1,4)
 
 	#grid.addWidget(l2,5,1)
 
@@ -65,7 +65,7 @@ def window():
 
 
 	win.setLayout(grid)
-	#win.setGeometry(100,100,200,100)
+	win.setGeometry(100,100,200,100)
 	win.setWindowTitle("Camera Control XY Robotic Arm")
 	win.show()
 	sys.exit(app.exec_())
