@@ -9,9 +9,6 @@ def window():
 
 
 	#------------------------------------------
-	l1=QLabel("Camera Control XY Robotic Arm")
-	l1.setAlignment(Qt.AlignCenter)
-	#------------------------------------------
 	act_msg = QLineEdit()
 
 	#------------------------------------------
@@ -26,7 +23,7 @@ def window():
 	QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
 
 	stop_btn=QPushButton(win)
-	stop_btn.setText("Pause")
+	stop_btn.setText("Stop")
 	
 	QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
 	#------------------------------------------
@@ -39,35 +36,31 @@ def window():
 	l2.setPixmap(QPixmap("detected circles.jpg"))
 	#------------------------------------------
 
-	vbox=QVBoxLayout()
-	vbox.addWidget(l1)
-	vbox.addStretch()
-	vbox.addWidget(act_msg)
-	vbox.addStretch()
-
-
+	
 	grid=QGridLayout()
 
-	grid.addWidget(start_btn,1,1)
-	grid.addWidget(pause_btn,1,2)
-	grid.addWidget(stop_btn,1,3)
+	grid.addWidget(act_msg,1,1)
 
-	grid.addWidget(QLabel("X_target ="),2,1)
-	grid.addWidget(addx,2,2)
-	grid.addWidget(addy,2,3)
-	grid.addWidget(QLabel("X_target ="),2,4)
+	grid.addWidget(start_btn,2,1)
+	grid.addWidget(pause_btn,2,2)
+	grid.addWidget(stop_btn,2,3)
+
+	grid.addWidget(QLabel("X_target ="),3,1)
+	grid.addWidget(addx,3,2)
+	grid.addWidget(QLabel("Y_target ="),3,3)
+	grid.addWidget(addy,3,4)
+
+	grid.addWidget(status_msg,4,1)
 
 	win.setLayout(grid)
+	#------------------------------------------
 
-	vbox.addStretch()
-	vbox.addWidget(status_msg)
 	vbox.addStretch()
 	vbox.addWidget(l2)
 
-	win.setLayout(vbox)
 
 	#win.setGeometry(100,100,200,100)
-	win.setWindowTitle("PyQt")
+	win.setWindowTitle("Camera Control XY Robotic Arm")
 	win.show()
 	sys.exit(app.exec_())
 

@@ -17,7 +17,7 @@ def window():
 	QObject.connect(pause_btn,SIGNAL("clicked()"),pause_clicked)
 
 	stop_btn=QPushButton(win)
-	stop_btn.setText("Pause")
+	stop_btn.setText("Stop")
 	stop_btn.move(250,20)
 	QObject.connect(stop_btn,SIGNAL("clicked()"),stop_clicked)
 
