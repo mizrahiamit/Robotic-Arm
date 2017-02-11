@@ -65,7 +65,7 @@ def window():
 	grid.addWidget(QLabel("ROI image"),row,1,1,4)
 
 	row=row+1
-	grid.addWidget(l2,row,1,8,6)
+	grid.addWidget(l2,row,1,4,3)
 
 
 
