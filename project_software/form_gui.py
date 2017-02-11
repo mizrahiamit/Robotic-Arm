@@ -1,6 +1,13 @@
 import sys
-from PyQt4.QtCore import SIGNAL
-from PyQt4.QtGui import QDialog, QApplication, QPushButton, QLineEdit, QFormLayout
+
+
+from PyQt4 import QtCore
+from PyQt4 import QtGui
+from PyQt4.QtCore import (Qt, SIGNAL)
+from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
+
+#from PyQt4.QtCore import SIGNAL
+#from PyQt4.QtGui import QDialog, QApplication, QPushButton, QLineEdit, QFormLayout
 
 class Form(QDialog):
     def __init__(self, parent=None):
