@@ -15,10 +15,6 @@ def window():
 	msg.setDetailedText("The details are as follows:")
 	msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
 	msg.buttonClicked.connect(msgbtn)
-	retval=msg.exec_()
-	print "value of pressed message box button:", retval
-
-
 	
 	
 	sys.exit(app.exec_())
