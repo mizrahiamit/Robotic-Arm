@@ -28,11 +28,13 @@ class Form(QDialog):
 
         self.pause_btn=QtGui.QPushButton()
         self.pause_btn.setText("Pause")
+        self.pause_btn.setEnabled(False)
         
         self.connect(self.pause_btn,SIGNAL("clicked()"),self.pause_clicked)
 
         self.stop_btn=QtGui.QPushButton()
         self.stop_btn.setText("Stop")
+        self.stop_btn.setEnabled(False)
         
         self.connect(self.stop_btn,SIGNAL("clicked()"),self.stop_clicked)
         #------------------------------------------
@@ -103,7 +105,7 @@ class Form(QDialog):
         dst_coordinate = int(self.addx.text()) , int(self.addy.text())
         #get from detection, example: [310 , 410]
         src_coordinate = 310 , 410
-        if(check_coordinates(dst_coordinate,arm_src_coor,arm_radius)):
+        if(check_coordinates(dst_coordinate,src_coordinate,arm_radius)):
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
             robotic_arm_algoritem()
