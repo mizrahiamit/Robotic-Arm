@@ -7,7 +7,6 @@ from PyQt4.QtCore import (Qt, SIGNAL)
 from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
 from main_function import *
 
-import threading
 import time
 
 
@@ -112,7 +111,12 @@ class Form(QDialog):
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
 
-            threading.Thread(target=self.robotic_arm_algoritem, args=(bool,)).start()
+            for _ in robotic_arm_algoritem((bool):
+                self.start_btn.setEnabled(False)
+                self.pause_btn.setEnabled(True)
+                self.stop_btn.setEnabled(True)
+                self.status_msg.setText("Running")
+                self.act_msg.setText("Stand by")
             #robotic_arm_algoritem()
                 
         else:
