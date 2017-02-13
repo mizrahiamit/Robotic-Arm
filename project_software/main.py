@@ -111,7 +111,7 @@ class Form(QDialog):
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
 
-            for _ in robotic_arm_algoritem(bool)
+            for _ in robotic_arm_algoritem(bool):
             #robotic_arm_algoritem()
         else:
             self.start_btn.setEnabled(True)
