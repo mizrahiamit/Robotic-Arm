@@ -97,19 +97,24 @@ class Form(QDialog):
 
     def start_clicked(self):
         self.status_msg.setText("Start clicked")
-
-        self.start_btn.setEnabled(False)
-        self.pause_btn.setEnabled(True)
-        self.stop_btn.setEnabled(True)
         print "Start clicked"
+        
         dst_coordinate = int(self.addx.text()) , int(self.addy.text())
         #get from detection, example: [310 , 410]
         src_coordinate = 310 , 410
         if(check_coordinates(dst_coordinate,src_coordinate,200)):
+
+            self.start_btn.setEnabled(False)
+            self.pause_btn.setEnabled(True)
+            self.stop_btn.setEnabled(True)
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
+
             robotic_arm_algoritem()
         else:
+            self.start_btn.setEnabled(True)
+            self.pause_btn.setEnabled(False)
+            self.stop_btn.setEnabled(False)
             self.status_msg.setText("Coordinates out of reach")
             self.act_msg.setText("Please choose coordinates")
 
