@@ -91,26 +91,26 @@ class Form(QDialog):
 
 
 
-        self.setWindowTitle("Learning")
+        
 
     def start_clicked(self):
         self.status_msg.setText("Start clicked")
         self.start_btn.setEnabled(False)
-        self.pause_btn.setEnabled()
-        self.stop_btn.setEnabled()
+        self.pause_btn.setEnabled(True)
+        self.stop_btn.setEnabled(True)
         print "Start clicked"
 
     def pause_clicked(self):
         self.status_msg.setText("Pause clicked")
-        self.start_btn.setEnabled()
+        self.start_btn.setEnabled(True)
         self.pause_btn.setEnabled(False)
-        self.stop_btn.setEnabled()
+        self.stop_btn.setEnabled(True)
         print "Pause clicked"
 
     def stop_clicked(self):
         self.status_msg.setText("Stop clicked")
-        self.start_btn.setEnabled()
-        self.pause_btn.setEnabled()
+        self.start_btn.setEnabled(True)
+        self.pause_btn.setEnabled(True)
         self.stop_btn.setEnabled(False)
         print "Stop clicked"
 
