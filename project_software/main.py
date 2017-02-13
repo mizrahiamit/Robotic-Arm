@@ -5,7 +5,7 @@ from PyQt4 import QtCore
 from PyQt4 import QtGui
 from PyQt4.QtCore import (Qt, SIGNAL)
 from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
-
+from main_function import *
 #from PyQt4.QtCore import SIGNAL
 #from PyQt4.QtGui import QDialog, QApplication, QPushButton, QLineEdit, QFormLayout
 
@@ -93,13 +93,25 @@ class Form(QDialog):
 
     def start_clicked(self):
         self.status_msg.setText("Start clicked")
-
-        dst_coordinate = [int(self.addx) , int(self.addy)]
-        src_coordinate = [0 , 0]
-        if(check_coordinates
-
-
         print "Start clicked"
+        dst_coordinate = [int(self.addx) , int(self.addy)]
+        #get from detection, example: [310 , 410]
+        src_coordinate = [310 , 410]
+        if(check_coordinates(dst_coordinate,arm_src_coor,arm_radius)):
+            self.status_msg.setText("Running")
+            self.act_msg.setText("Stand by")
+            robotic_arm_algoritem()
+        else:
+            self.status_msg.setText("Coordinates out of reach")
+            self.act_msg.setText("Please choose coordinates")
+
+            self.addx.setText('0')
+            self.addy.setText('0')
+
+
+
+
+        
 
     def pause_clicked(self):
         self.status_msg.setText("Paused")
@@ -111,7 +123,7 @@ class Form(QDialog):
         self.act_msg.setText("Please choose coordinates")
 
         self.addx.setText('0')
-        elf.addy.setText('0')
+        self.addy.setText('0')
 
         disable_arm()
 
