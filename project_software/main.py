@@ -104,14 +104,15 @@ class Form(QDialog):
         #get from detection, example: [310 , 410]
         src_coordinate = 310 , 410
         if(check_coordinates(dst_coordinate,src_coordinate,200)):
+            self.start_btn.setEnabled(False)
+            self.pause_btn.setEnabled(True)
+            self.stop_btn.setEnabled(True)
+            self.status_msg.setText("Running")
+            self.act_msg.setText("Stand by")
 
-            for _ in robotic_arm_algoritem(bool):
+            threading.Thread(target=self.robotic_arm_algoritem, args=(bool,)).start()
             #robotic_arm_algoritem()
-                self.start_btn.setEnabled(False)
-                self.pause_btn.setEnabled(True)
-                self.stop_btn.setEnabled(True)
-                self.status_msg.setText("Running")
-                self.act_msg.setText("Stand by")
+                
         else:
             self.start_btn.setEnabled(True)
             self.pause_btn.setEnabled(False)
