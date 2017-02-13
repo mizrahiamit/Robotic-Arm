@@ -10,9 +10,9 @@ def check_coordinates(dest_coor,arm_src_coor,arm_radius):
     #first condition: coordinates must be in the frame 640x480
     if (dest_coor[0] < 640) or (dest_coor[1] < 480) or (dest_coor[0] == 0 ) or (dest_coor[1] == 0 ):
         #second condition: coordinates must be in arm region
-        delta_x = asb(dest_coor[1]-arm_src_coor[0])
-        delta_y = asb(dest_coor[1]-arm_src_coor[0])
-        distance = sqrt( pow(delta_y,2) + pow(delta_x,2) )
+        delta_x = abs(dest_coor[1]-arm_src_coor[0])
+        delta_y = abs(dest_coor[1]-arm_src_coor[0])
+        distance = math.sqrt( pow(delta_y,2) + pow(delta_x,2) )
         if distance< arm_radius :
             return  True
         else:
