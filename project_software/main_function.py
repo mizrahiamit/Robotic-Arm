@@ -27,17 +27,17 @@ def disable_arm():
 #------------------------------------------------------
 def robotic_arm_algoritem():
 
-    sleep(1)
+    time.sleep(1)
     print "Take picture"
-    sleep(1)
+    time.sleep(1)
     print "show picture"
-    sleep(1)
+    time.sleep(1)
     print "locate arm position"
-    sleep(1)
+    time.sleep(1)
     print "check success"
-    sleep(1)
+    time.sleep(1)
     print "calculate arm next move"
-    sleep(1)
+    time.sleep(1)
     print "command to the servo motors"
 
     return True
