@@ -100,9 +100,9 @@ class Form(QDialog):
         self.pause_btn.setEnabled(True)
         self.stop_btn.setEnabled(True)
         print "Start clicked"
-        dst_coordinate = [int(self.addx) , int(self.addy)]
+        dst_coordinate = int(self.addx) , int(self.addy)
         #get from detection, example: [310 , 410]
-        src_coordinate = [310 , 410]
+        src_coordinate = 310 , 410
         if(check_coordinates(dst_coordinate,arm_src_coor,arm_radius)):
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
