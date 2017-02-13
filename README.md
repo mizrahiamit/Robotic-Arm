@@ -13,8 +13,10 @@ Description Camera control XY Robotic arm
 - Writing a GUI
 - Display a picture in the GUI
 - Get pixel coordinate by clicking right click on the mouse
-- ------------------------Next-------------------------------------
 - Plan Block diagram to the software
+- ------------------------Next-------------------------------------
+- function robotic_arm_algoritem runs in loop after start_clicked->obotic_arm_algoritem()
+  and stop after stop btn or pause btn pressed
 - Read new image every n sec
 
 # Start Raspberry pi
