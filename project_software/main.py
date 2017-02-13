@@ -112,7 +112,7 @@ class Form(QDialog):
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
 
-            threading.Thread(target=self.robotic_arm_algoritem(), args=(bool,)).start()
+            threading.Thread(target=self.robotic_arm_algoritem, args=(bool,)).start()
             #robotic_arm_algoritem()
                 
         else:
