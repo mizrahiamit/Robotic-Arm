@@ -137,29 +137,7 @@ class Form(QDialog):
 
             self.addx.setText('0')
             self.addy.setText('0')
-'''
-    def robotic_arm_algoritem(self,bool):
-        while bool:
-            time.sleep(1)
-            print "Take picture"
-            time.sleep(1)
-            print "show picture"
-            time.sleep(1)
-            print "locate arm position"
-            time.sleep(1)
-            print "check success"
-            time.sleep(1)
-            print "calculate arm next move"
-            time.sleep(1)
-            print "command to the servo motors"
-'''
 
-    
-
-
-
-
-        
 
     def pause_clicked(self):
         self.status_msg.setText("Paused")
