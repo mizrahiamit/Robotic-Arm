@@ -37,7 +37,9 @@ class Form(QDialog):
         self.connect(self.stop_btn,SIGNAL("clicked()"),self.stop_clicked)
         #------------------------------------------
         self.addx = QtGui.QLineEdit()
+        self.addx.setText("0")
         self.addy = QtGui.QLineEdit()
+        self.addy.setText("0")
         #------------------------------------------
         self.status_msg = QtGui.QLineEdit()
         self.status_msg.setObjectName("status_msg")
@@ -93,6 +95,10 @@ class Form(QDialog):
 
     def start_clicked(self):
         self.status_msg.setText("Start clicked")
+
+        self.start_btn.setEnabled(False)
+        self.pause_btn.setEnabled(True)
+        self.stop_btn.setEnabled(True)
         print "Start clicked"
         dst_coordinate = [int(self.addx) , int(self.addy)]
         #get from detection, example: [310 , 410]
@@ -115,11 +121,17 @@ class Form(QDialog):
 
     def pause_clicked(self):
         self.status_msg.setText("Paused")
+        self.start_btn.setEnabled(True)
+        self.pause_btn.setEnabled(False)
+        self.stop_btn.setEnabled(True)
         self.act_msg.setText("Waiting for command")
         print "Pause clicked"
 
     def stop_clicked(self):
         self.status_msg.setText("Stoped")
+        self.start_btn.setEnabled(True)
+        self.pause_btn.setEnabled(False)
+        self.stop_btn.setEnabled(False)
         self.act_msg.setText("Please choose coordinates")
 
         self.addx.setText('0')

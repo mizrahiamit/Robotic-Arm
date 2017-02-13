@@ -9,7 +9,7 @@ def check_coordinates(dest_coor,arm_src_coor,arm_radius):
     #return true if move is possible, else false.
     print "Checking if move is possible"
     #first condition: coordinates must be in the frame 640x480
-    if (dest_coor[1] < 640) and (dest_coor[2] < 480):
+    if (dest_coor[1] < 640) or (dest_coor[2] < 480) or dest_coor[1] == 0 ) or (dest_coor[2] < == 0 ):
         #second condition: coordinates must be in arm region
         delta_x = asb(dest_coor[1]-arm_src_coor[1])
         delta_y = asb(dest_coor[2]-arm_src_coor[2])
