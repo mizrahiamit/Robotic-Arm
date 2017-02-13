@@ -6,8 +6,9 @@ from PyQt4 import QtGui
 from PyQt4.QtCore import (Qt, SIGNAL)
 from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
 from main_function import *
-#from PyQt4.QtCore import SIGNAL
-#from PyQt4.QtGui import QDialog, QApplication, QPushButton, QLineEdit, QFormLayout
+
+import threading
+
 
 class Form(QDialog):
     def __init__(self, parent=None):
@@ -24,7 +25,7 @@ class Form(QDialog):
         self.start_btn= QtGui.QPushButton()
         self.start_btn.setText("Start")
         
-        self.start_btn.clicked.connect(self.start_clicked)
+        self.connect(self.start_btn,SIGNAL("clicked(bool)"),self.start_clicked)
 
         self.pause_btn=QtGui.QPushButton()
         self.pause_btn.setText("Pause")
@@ -95,7 +96,7 @@ class Form(QDialog):
 
         
 
-    def start_clicked(self):
+    def start_clicked(self,bool):
         self.status_msg.setText("Start clicked")
         print "Start clicked"
         
@@ -110,7 +111,8 @@ class Form(QDialog):
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
 
-            robotic_arm_algoritem()
+            for _ in robotic_arm_algoritem(bool)
+            #robotic_arm_algoritem()
         else:
             self.start_btn.setEnabled(True)
             self.pause_btn.setEnabled(False)
