@@ -25,7 +25,7 @@ def disable_arm():
     print "Disabling arm"
     return True 
 #------------------------------------------------------
-def robotic_arm_algoritem(self):
+def robotic_arm_algoritem():
 
     sleep(1)
     print "Take picture"
