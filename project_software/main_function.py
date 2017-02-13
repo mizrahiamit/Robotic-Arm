@@ -25,7 +25,8 @@ def disable_arm():
     print "Disabling arm"
     return True 
 #------------------------------------------------------
-def robotic_arm_algoritem(self,boll):
+'''
+def robotic_arm_algoritem(self,bool):
     while bool:
         time.sleep(1)
         print "Take picture"
@@ -41,4 +42,5 @@ def robotic_arm_algoritem(self,boll):
         print "command to the servo motors"
 
     return True
+'''
 #------------------------------------------------------
