@@ -25,8 +25,8 @@ def disable_arm():
     print "Disabling arm"
     return True 
 #------------------------------------------------------
-def robotic_arm_algoritem():
-    while (True):
+def robotic_arm_algoritem(self,boll):
+    while bool:
         time.sleep(1)
         print "Take picture"
         time.sleep(1)
