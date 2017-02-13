@@ -20,7 +20,7 @@ def check_coordinates(dest_coor,arm_src_coor,arm_radius):
     else:
         return False
 #------------------------------------------------------
-def disable_arm(self):
+def disable_arm():
     #disabling pwm port, to the servo motors.
     print "Disabling arm"
     return True 
