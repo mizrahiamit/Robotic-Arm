@@ -16,7 +16,7 @@ class Form(QDialog):
 
        
 
-
+        self.algoritem_enable = False
         #------------------------------------------
         self.act_msg = QtGui.QLineEdit()
         self.act_msg.setObjectName("act_msg")
@@ -87,6 +87,19 @@ class Form(QDialog):
         grid.addWidget(self.l2,row,1,8,6)
 
 
+        while (self.algoritem_enable):
+            time.sleep(1)
+            print "Take picture"
+            time.sleep(1)
+            print "show picture"
+            time.sleep(1)
+            print "locate arm position"
+            time.sleep(1)
+            print "check success"
+            time.sleep(1)
+            print "calculate arm next move"
+            time.sleep(1)
+            print "command to the servo motors"
 
         self.setLayout(grid)
         #setGeometry(x,y,width,height)
@@ -112,12 +125,7 @@ class Form(QDialog):
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
 
-            for _ in robotic_arm_algoritem((bool):
-                self.start_btn.setEnabled(False)
-                self.pause_btn.setEnabled(True)
-                self.stop_btn.setEnabled(True)
-                self.status_msg.setText("Running")
-                self.act_msg.setText("Stand by")
+            self.algoritem_enable = True
             
                 
         else:
@@ -129,7 +137,7 @@ class Form(QDialog):
 
             self.addx.setText('0')
             self.addy.setText('0')
-
+'''
     def robotic_arm_algoritem(self,bool):
         while bool:
             time.sleep(1)
@@ -144,6 +152,7 @@ class Form(QDialog):
             print "calculate arm next move"
             time.sleep(1)
             print "command to the servo motors"
+'''
 
     
 
@@ -158,6 +167,9 @@ class Form(QDialog):
         self.pause_btn.setEnabled(False)
         self.stop_btn.setEnabled(True)
         self.act_msg.setText("Waiting for command")
+
+        self.algoritem_enable = False
+
         print "Pause clicked"
 
     def stop_clicked(self):
@@ -171,6 +183,8 @@ class Form(QDialog):
         self.addy.setText('0')
 
         disable_arm()
+
+        self.algoritem_enable = False
 
         print "Stop clicked"
 
