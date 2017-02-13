@@ -105,7 +105,7 @@ class Form(QDialog):
         dst_coordinate = int(self.addx.text()) , int(self.addy.text())
         #get from detection, example: [310 , 410]
         src_coordinate = 310 , 410
-        if(check_coordinates(dst_coordinate,src_coordinate,arm_radius)):
+        if(check_coordinates(dst_coordinate,src_coordinate,200)):
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
             robotic_arm_algoritem()
