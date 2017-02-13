@@ -89,7 +89,7 @@ class Form(QDialog):
 
 
 
-        self.setWindowTitle("Learning")
+        
 
     def start_clicked(self):
         self.status_msg.setText("Start clicked")
