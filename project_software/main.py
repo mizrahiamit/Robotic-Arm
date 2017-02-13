@@ -28,13 +28,13 @@ class Form(QDialog):
 
         self.pause_btn=QtGui.QPushButton()
         self.pause_btn.setText("Pause")
-        self.pause_btn.setEnabled(False)
+        #self.pause_btn.setEnabled(False)
         
         self.connect(self.pause_btn,SIGNAL("clicked()"),self.pause_clicked)
 
         self.stop_btn=QtGui.QPushButton()
         self.stop_btn.setText("Stop")
-        self.stop_btn.setEnabled(False)
+        #self.stop_btn.setEnabled(False)
         
         self.connect(self.stop_btn,SIGNAL("clicked()"),self.stop_clicked)
         #------------------------------------------
