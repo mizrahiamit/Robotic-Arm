@@ -108,9 +108,9 @@ class Form(QDialog):
         #get from detection, example: [310 , 410]
         src_coordinate = 310 , 410
         if(check_coordinates(dst_coordinate,src_coordinate,200)):
-            self.start_btn.setEnabled(False)
-            self.pause_btn.setEnabled(True)
-            self.stop_btn.setEnabled(True)
+            #self.start_btn.setEnabled(False)
+            #self.pause_btn.setEnabled(True)
+            #self.stop_btn.setEnabled(True)
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
             self._running = True
@@ -120,9 +120,9 @@ class Form(QDialog):
             
                 
         else:
-            self.start_btn.setEnabled(True)
-            self.pause_btn.setEnabled(False)
-            self.stop_btn.setEnabled(False)
+            #self.start_btn.setEnabled(True)
+            #self.pause_btn.setEnabled(False)
+            #self.stop_btn.setEnabled(False)
             self.status_msg.setText("Coordinates out of reach")
             self.act_msg.setText("Please choose coordinates")
 
@@ -132,9 +132,9 @@ class Form(QDialog):
 
     def pause_clicked(self):
         self.status_msg.setText("Paused")
-        self.start_btn.setEnabled(True)
-        self.pause_btn.setEnabled(False)
-        self.stop_btn.setEnabled(True)
+        #self.start_btn.setEnabled(True)
+        #self.pause_btn.setEnabled(False)
+        #self.stop_btn.setEnabled(True)
         self.act_msg.setText("Waiting for command")
         #Stop robotic_arm_algoritem()
         self._running = False
@@ -145,9 +145,9 @@ class Form(QDialog):
 
     def stop_clicked(self):
         self.status_msg.setText("Stoped")
-        self.start_btn.setEnabled(True)
-        self.pause_btn.setEnabled(False)
-        self.stop_btn.setEnabled(False)
+        #self.start_btn.setEnabled(True)
+        #self.pause_btn.setEnabled(False)
+        #self.stop_btn.setEnabled(False)
         self.act_msg.setText("Please choose coordinates")
         #Enter zero values to XY coordinates
         self.addx.setText('0')
