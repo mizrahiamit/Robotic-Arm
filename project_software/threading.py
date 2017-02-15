@@ -22,7 +22,7 @@ class MainDialog(QDialog, showGui.Ui_mainDialog):
 
 class WorkrThread(QThread):
 
-	def __init__(self. parent=None):
+	def __init__(self, parent=None):
 		super(WorkrThread, self).__init__(parent)
 
 	def run(self):
