@@ -4,7 +4,7 @@ from PyQt4.QtGui import *
 
 import time
 
-class MainDialog(QDialog, showGui.Ui_mainDialog):
+class MainDialog(QDialog):
 
 	def __init__(self, parent=None):
 		super(MainDialog, self).__init__(parent)
@@ -28,3 +28,12 @@ class WorkrThread(QThread):
 	def run(self):
 		time.sleep(5)
 		print "Done with the thread"
+
+
+#Allow command line arguments for your app
+app = QApplication(sys.argv)
+#MMain window
+form = MainDialog()
+form.show()
+# Start the event loop.
+app.exec_()
