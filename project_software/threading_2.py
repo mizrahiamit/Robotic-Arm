@@ -17,8 +17,7 @@ class Form(QDialog):
         super(Form, self).__init__(parent)
 
        
-
-
+        self._running = False
         #------------------------------------------
         self.act_msg = QtGui.QLineEdit()
         self.act_msg.setObjectName("act_msg")
@@ -112,10 +111,9 @@ class WorkrThread(QThread):
         super(WorkrThread, self).__init__(parent)
 
     def run(self):
-        
+        sleep(5)
         print "Enter thread"
-        while Form._running:
-            robotic_arm_algoritem()
+        
 
 
 app = QApplication(sys.argv)
