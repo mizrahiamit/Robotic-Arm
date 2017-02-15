@@ -93,7 +93,7 @@ class Form(QWidget):
         self.status_msg.setText("Start clicked")
         print "Start clicked"
         #generator**********************************
-        self.stop()  # Stop any existing timer
+        self.stop_clicked()  # Stop any existing timer
         self._generator = self.loopGenerator()  # Start the loop
         self._timerId = self.startTimer(0)   # This is the idle timer
 
@@ -147,7 +147,7 @@ class Form(QWidget):
         try:
             next(self._generator)  # Run the next iteration
         except StopIteration:
-            self.stop()  # Iteration has finshed, kill the timer
+            self.stop_clicked()  # Iteration has finshed, kill the timer
 
 
 
