@@ -95,7 +95,7 @@ class Form(QDialog):
 
     def start_clicked(self):
         self._running = True
-        self.worker.algoritemt()#******************************
+        self.worker.algoritem()
         self.status_msg.setText("Start clicked")
         print "Start clicked"
 
