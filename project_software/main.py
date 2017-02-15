@@ -1,3 +1,4 @@
+# Only needed for access to command line arguments
 import sys
 
 
@@ -12,6 +13,7 @@ import time
 
 class Form(QDialog):
     def __init__(self, parent=None):
+        #Allow Qt to set up the object.
         super(Form, self).__init__(parent)
 
        
@@ -93,6 +95,7 @@ class Form(QDialog):
         #------------------------------------------
         #setGeometry(x,y,width,height)
         self.setGeometry(100,100,600,350)
+        #Title for main window
         self.setWindowTitle("Camera Control XY Robotic Arm")
 
 
@@ -114,9 +117,6 @@ class Form(QDialog):
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
             self._running = True
-
-            while self._running:
-                robotic_arm_algoritem()
             
                 
         else:
@@ -168,13 +168,23 @@ class Form(QDialog):
         self.addy.setText(str(y))
         print ("x = ", x,"y = ", y)
         
+
+    def status_check(self):
+        if sef._running:
+            robotic_arm_algoritem()
+            return True
+        else:
+            return False
+        
 '''
     def mousePressEvent(self, QMouseEvent):
         print QMouseEvent.pos()
 '''
 
-
+#Allow command line arguments for your app
 app = QApplication(sys.argv)
+#MMain window
 form = Form()
 form.show()
+# Start the event loop.
 app.exec_()
