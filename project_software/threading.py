@@ -4,7 +4,7 @@ import sys
 from PyQt4 import QtCore
 from PyQt4 import QtGui
 from PyQt4.QtCore import (Qt, SIGNAL)
-from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
+from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton, QThread)
 
 import time
 
