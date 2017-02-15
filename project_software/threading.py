@@ -20,12 +20,13 @@ class Form(QDialog):
         self.connect(self.process_btn,SIGNAL("clicked()"),self.processData)
         layout.addWidget(self.process_btn)
         
-        self.workrThread = WorkrThread()
+        #self.workrThread = WorkrThread()
 
     def processData(self):
-		self.workrThread.start()#call "run" method
-		QMessage.information(self,"Done!", "Done.")
-
+		#self.workrThread.start()#call "run" method
+		self.msg=QtGui.QMessageBox()
+		self.msg.setInformativeText("Done!", "Done.")
+'''
 class WorkrThread(QThread):
 
 	def __init__(self, parent=None):
@@ -34,7 +35,7 @@ class WorkrThread(QThread):
 	def run(self):
 		time.sleep(5)
 		print "Done with the thread"
-
+'''
 
 #Allow command line arguments for your app
 app = QApplication(sys.argv)
