@@ -6,6 +6,7 @@ from PyQt4 import QtGui
 from PyQt4.QtCore import *#(Qt, SIGNAL)
 from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
 
+import time
 #from PyQt4.QtCore import SIGNAL
 #from PyQt4.QtGui import QDialog, QApplication, QPushButton, QLineEdit, QFormLayout
 
@@ -89,7 +90,7 @@ class Form(QDialog):
 
 
 
-        self.setWindowTitle("Learning")
+        
 
     def start_clicked(self):
         self.workerThread.start()#******************************
