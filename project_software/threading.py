@@ -85,11 +85,16 @@ class Form(QDialog):
         self.worker = Worker()
         self.worker.moveToThread(self.thread)
 
+        self.finished.connect(self.stop_thread)
+
         #win.setGeometry(x,y,width,height)
         self.setGeometry(100,100,600,350)
         self.setWindowTitle("Camera Control XY Robotic Arm")
 
-
+    def stop_thread(self):
+        self.worker.stop()
+        self.thread.quit()
+        self.thread.wait()
 
         
 
