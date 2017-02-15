@@ -12,9 +12,10 @@ import time
 #from PyQt4.QtCore import SIGNAL
 #from PyQt4.QtGui import QDialog, QApplication, QPushButton, QLineEdit, QFormLayout
 
-class Form(QDialog):
+#class Form(QDialog):
+class Form(QWidget):
     #generator: parent=None, **kwargs **************************************
-    def __init__(self, parent, **kwargs):
+    def __init__(self, parent=None, **kwargs):
         super(Form, self).__init__(parent, **kwargs)
 
         #generator**********************************
