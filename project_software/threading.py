@@ -10,8 +10,9 @@ class MainDialog(QDialog):
 		super(MainDialog, self).__init__(parent)
 		
 
-		self.showButton.setText("Process")
-		self.connect(self.showButton, SIGNAL("clicked()"), self.processData)
+		self.process_btn=QtGui.QPushButton()
+        self.process_btn.setText("Process")
+        self.connect(self.process_btn,SIGNAL("clicked()"),self.processData)
 
 		self.workrThread = WorkrThread()
 
