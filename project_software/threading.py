@@ -14,7 +14,7 @@ class MainDialog(QDialog):
         self.process_btn.setText("Process")
         self.connect(self.process_btn,SIGNAL("clicked()"),self.processData)
 
-		self.workrThread = WorkrThread()
+        self.workrThread = WorkrThread()
 
 
 	def processData(self):
