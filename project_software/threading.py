@@ -12,9 +12,8 @@ class Form(QDialog):
     def __init__(self, parent=None):
         #Allow Qt to set up the object.
         super(Form, self).__init__(parent)
-		
 
-		self.process_btn=QtGui.QPushButton()
+        self.process_btn=QtGui.QPushButton()
 		self.process_btn.setText("Process")
         self.connect(self.process_btn,SIGNAL("clicked()"),self.processData)
 
