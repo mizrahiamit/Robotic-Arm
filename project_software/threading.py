@@ -3,8 +3,8 @@ import sys
 
 from PyQt4 import QtCore
 from PyQt4 import QtGui
-from PyQt4.QtCore import (Qt, SIGNAL, QCoreApplication, QObject, QRunnable, QThread, QThreadPool, pyqtSignal)
-from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
+from PyQt4.QtCore import *#(Qt, SIGNAL, QCoreApplication, QObject, QRunnable, QThread, QThreadPool, pyqtSignal)
+from PyQt4.QtGui import *#(QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
 
 import time
 
