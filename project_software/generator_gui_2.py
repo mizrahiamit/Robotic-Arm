@@ -90,6 +90,7 @@ class Form(QDialog):
         self.status_msg.setText("Start clicked")
         print "Start clicked"
         self._running = True
+        print str(self._running)
         self.loopGenerator()
 
     def pause_clicked(self):
@@ -108,7 +109,9 @@ class Form(QDialog):
    
     def loopGenerator(self):
         a=0
-        while a<7 and self._running == True:
+        print "loopGenerator "+str(self._running)
+
+        while a < 7 and self._running == True:
             a+=1
 
             time.sleep(1)
