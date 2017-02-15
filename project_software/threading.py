@@ -14,13 +14,12 @@ class Form(QDialog):
         super(Form, self).__init__(parent)
 
         self.process_btn=QtGui.QPushButton()
-		self.process_btn.setText("Process")
+        self.process_btn.setText("Process")
         self.connect(self.process_btn,SIGNAL("clicked()"),self.processData)
 
         self.workrThread = WorkrThread()
 
-
-	def processData(self):
+    def processData(self):
 		self.workrThread.start()#call "run" method
 		QMessage.information(self,"Done!", "Done.")
 
