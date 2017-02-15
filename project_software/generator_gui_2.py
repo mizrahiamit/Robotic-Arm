@@ -17,7 +17,7 @@ class Form(QDialog):
     def __init__(self, parent=None):
         super(Form, self).__init__(parent)
 
-        sef._running = True
+        self._running = True
         #------------------------------------------
         self.act_msg = QtGui.QLineEdit()
         self.act_msg.setObjectName("act_msg")
@@ -89,19 +89,19 @@ class Form(QDialog):
     def start_clicked(self):
         self.status_msg.setText("Start clicked")
         print "Start clicked"
-        sef._running = True
+        self._running = True
         loopGenerator()
 
     def pause_clicked(self):
         self.status_msg.setText("Pause clicked")
         print "Pause clicked"
-        sef._running = False
+        self._running = False
 
 
     def stop_clicked(self):
         self.status_msg.setText("Stop clicked")
         print "Stop clicked"
-        sef._running = False
+        self._running = False
 
 
 
