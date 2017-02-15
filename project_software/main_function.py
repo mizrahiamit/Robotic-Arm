@@ -25,7 +25,7 @@ def disable_arm():
     print "Disabling arm"
     return True 
 #------------------------------------------------------
-
+'''
 def robotic_arm_algoritem():
     
     time.sleep(1)
@@ -42,5 +42,6 @@ def robotic_arm_algoritem():
     print "command to the servo motors"
 
     return True
+'''
 
 #------------------------------------------------------
