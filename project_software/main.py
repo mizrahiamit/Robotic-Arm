@@ -170,7 +170,7 @@ class Form(QDialog):
         
 
     def status_check(self):
-        if sef._running:
+        if self._running:
             robotic_arm_algoritem()
             return True
         else:

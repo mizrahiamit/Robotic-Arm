@@ -5,6 +5,8 @@ from PyQt4 import QtCore
 from PyQt4 import QtGui
 from PyQt4.QtCore import *#(Qt, SIGNAL)
 from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
+from main_function import *
+
 
 import time
 #from PyQt4.QtCore import SIGNAL
@@ -44,8 +46,7 @@ class Form(QDialog):
         self.status_msg.setObjectName("status_msg")
         self.status_msg.setText("Stand by")
         #------------------------------------------
-        self.l2=QtGui.QLabel()
-        self.l2.setPixmap(QtGui.QPixmap("detected circles.jpg"))
+        
         #------------------------------------------
         self.workerThread = WorkrThread()#***************************************
         #------------------------------------------
@@ -75,11 +76,7 @@ class Form(QDialog):
         row=row+1
         grid.addWidget(self.status_msg,row,1,1,4)
 
-        row=row+1
-        grid.addWidget(QtGui.QLabel("ROI image"),row,1,1,4)
-
-        row=row+1
-        grid.addWidget(self.l2,row,1,8,6)
+        
 
 
 
@@ -93,15 +90,18 @@ class Form(QDialog):
         
 
     def start_clicked(self):
+        self._running = True
         self.workerThread.start()#******************************
         self.status_msg.setText("Start clicked")
         print "Start clicked"
 
     def pause_clicked(self):
+        self._running = False
         self.status_msg.setText("Pause clicked")
         print "Pause clicked"
 
     def stop_clicked(self):
+        self._running = False
         self.status_msg.setText("Stop clicked")
         print "Stop clicked"
 
@@ -112,8 +112,10 @@ class WorkrThread(QThread):
         super(WorkrThread, self).__init__(parent)
 
     def run(self):
-        time.sleep(5)
-        print "Done with the thread"
+        
+        print "Enter thread"
+        while Form._running:
+            robotic_arm_algoritem()
 
 
 app = QApplication(sys.argv)
