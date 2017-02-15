@@ -93,14 +93,21 @@ class Form(QWidget):
         self.status_msg.setText("Start clicked")
         print "Start clicked"
         #generator**********************************
-        self.stop_clicked()  # Stop any existing timer
-        self._generator = self.loopGenerator()  # Start the loop
-        self._timerId = self.startTimer(0)   # This is the idle timer
+        # Stop any existing timer
+        if self._timerId is not None:
+            self.killTimer(self._timerId)
+        self._generator = None
+        self._timerId = None
+        # Start the loop
+        self._generator = self.loopGenerator()
+        # This is the idle timer 
+        self._timerId = self.startTimer(0)   
 
     def pause_clicked(self):
         self.status_msg.setText("Pause clicked")
         print "Pause clicked"
         #generator**********************************
+        # Stop any existing timer
         if self._timerId is not None:
             self.killTimer(self._timerId)
         self._generator = None
@@ -111,6 +118,7 @@ class Form(QWidget):
         self.status_msg.setText("Stop clicked")
         print "Stop clicked"
         #generator**********************************
+        # Stop any existing timer
         if self._timerId is not None:
             self.killTimer(self._timerId)
         self._generator = None
@@ -120,7 +128,8 @@ class Form(QWidget):
 
     #generator:**************************************
     def loopGenerator(self):
-        for a in range(7):
+        _iterations = 7 #enter the number of iterations
+        for a in range(_iterations):
             a+=1
 
             time.sleep(1)
