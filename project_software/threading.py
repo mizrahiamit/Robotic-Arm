@@ -47,9 +47,7 @@ class Form(QDialog):
         self.status_msg.setText("Stand by")
         #------------------------------------------
         
-        #------------------------------------------
-        self.workerThread = WorkrThread()#***************************************
-        #------------------------------------------
+        
         row = 1
         
         grid=QtGui.QGridLayout()
