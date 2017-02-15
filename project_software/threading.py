@@ -8,7 +8,7 @@ class MainDialog(QDialog):
 
 	def __init__(self, parent=None):
 		super(MainDialog, self).__init__(parent)
-		self.setupUi(self)
+		
 
 		self.showButton.setText("Process")
 		self.connect(self.showButton, SIGNAL("clicked()"), self.processData)
