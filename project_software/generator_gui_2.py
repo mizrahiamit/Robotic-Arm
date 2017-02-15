@@ -18,6 +18,7 @@ class Form(QDialog):
         super(Form, self).__init__(parent)
 
         self._running = True
+        self._generator = None
         #------------------------------------------
         self.act_msg = QtGui.QLineEdit()
         self.act_msg.setObjectName("act_msg")
@@ -91,7 +92,10 @@ class Form(QDialog):
         print "Start clicked"
         self._running = True
         print str(self._running)
-        self.loopGenerator()
+        self._generator = self.loopGenerator()
+        print "self._generator = "+str(self._generator)
+        self._timerId = self.startTimer(0)
+        print "self._timerId = "+str(self._timerId)
 
     def pause_clicked(self):
         self.status_msg.setText("Pause clicked")
