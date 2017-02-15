@@ -108,7 +108,7 @@ class Form(QDialog):
    
     def loopGenerator(self):
         a=0
-        while a<7 and sef._running == True:
+        while a<7 and self._running == True:
             a+=1
 
             time.sleep(1)
