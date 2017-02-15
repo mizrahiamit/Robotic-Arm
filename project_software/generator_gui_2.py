@@ -4,7 +4,7 @@ import sys
 from PyQt4 import QtCore
 from PyQt4 import QtGui
 from PyQt4.QtCore import *#(Qt, SIGNAL)
-from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
+from PyQt4.QtGui import (QApplication, QDialog, QWidget, QHBoxLayout, QLabel, QPushButton)
 from main_function import *
 
 
@@ -13,11 +13,11 @@ import time
 #from PyQt4.QtGui import QDialog, QApplication, QPushButton, QLineEdit, QFormLayout
 
 class Form(QDialog):
+    #generator: parent=None, **kwargs **************************************
     def __init__(self, parent=None):
         super(Form, self).__init__(parent)
 
-       
-        self._running = False
+        sef._running = True
         #------------------------------------------
         self.act_msg = QtGui.QLineEdit()
         self.act_msg.setObjectName("act_msg")
@@ -46,9 +46,7 @@ class Form(QDialog):
         self.status_msg.setText("Stand by")
         #------------------------------------------
         
-        #------------------------------------------
-        self.workerThread = WorkrThread()#***************************************
-        #------------------------------------------
+        
         row = 1
         
         grid=QtGui.QGridLayout()
@@ -75,45 +73,61 @@ class Form(QDialog):
         row=row+1
         grid.addWidget(self.status_msg,row,1,1,4)
 
-        
-
-
 
         self.setLayout(grid)
+
+        
+
         #win.setGeometry(x,y,width,height)
         self.setGeometry(100,100,600,350)
         self.setWindowTitle("Camera Control XY Robotic Arm")
 
-
+   
 
         
 
     def start_clicked(self):
-        self._running = True
-        self.workerThread.start()#******************************
         self.status_msg.setText("Start clicked")
         print "Start clicked"
+        sef._running = True
+        loopGenerator()
 
     def pause_clicked(self):
-        self._running = False
         self.status_msg.setText("Pause clicked")
         print "Pause clicked"
+        sef._running = False
+
 
     def stop_clicked(self):
-        self._running = False
         self.status_msg.setText("Stop clicked")
         print "Stop clicked"
+        sef._running = False
 
 
-class WorkrThread(QThread):
 
-    def __init__(self, parent=None):
-        super(WorkrThread, self).__init__(parent)
+   
+    def loopGenerator(self):
+        a=0
+        while a<7 and sef._running == True:
+            a+=1
 
-    def run(self):
-        sleep(5)
-        print "Enter thread"
-        
+            time.sleep(1)
+            print "Take picture"
+            time.sleep(1)
+            print "show picture"
+            time.sleep(1)
+            print "locate arm position"
+            time.sleep(1)
+            print "check success"
+            time.sleep(1)
+            print "calculate arm next move"
+            time.sleep(1)
+            print "command to the servo motors"
+
+            #"pause" the loop using yield
+            yield
+
+
 
 
 app = QApplication(sys.argv)
