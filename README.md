@@ -17,7 +17,16 @@ Description Camera control XY Robotic arm
 - function robotic_arm_algoritem runs in loop after start_clicked->obotic_arm_algoritem()
   and stop after stop btn or pause btn pressed
 - ------------------------Next-------------------------------------
-- Read new image every n sec
+- Read new image every n sec and show on GUI
+- Detect arm position every iteration
+- Show target coordinate on the image
+- Check if target coor. in arm work range (By radious)
+- Calculate arm next move (pwm)
+- Check for sucess
+- Add error after N max iterations
+- Check at the begining for arm recognition(3 points)
+- Organize Code
+
 
 # Start Raspberry pi
 - Open Terminal
