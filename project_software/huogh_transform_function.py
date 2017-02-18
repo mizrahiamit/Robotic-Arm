@@ -45,7 +45,7 @@ def get_color_mask(image,color):
 def return_circles_values(img):
     img = cv2.medianBlur(img,5)
 
-    circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,2,40, param1=35,param2=20,minRadius=5,maxRadius=50)
+    circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,2,100, param1=35,param2=20,minRadius=5,maxRadius=50)
     return circles
 
 def draw_circle(img,circles):
