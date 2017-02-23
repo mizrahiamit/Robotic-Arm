@@ -74,6 +74,7 @@ class Form(QWidget):
         vbox.addLayout(hbox)
         vbox.addStretch()
         #Start  Pause  Stop buttons
+        hbox = QtGui.QHBoxLayout()
         
         hbox.addWidget(self.start_btn)
         hbox.addStretch()
@@ -84,6 +85,7 @@ class Form(QWidget):
         vbox.addLayout(hbox)
         vbox.addStretch()
         #XY coordinates
+        hbox = QtGui.QHBoxLayout()
         
         hbox.addWidget(QtGui.QLabel("X_target ="))
         hbox.addStretch()
@@ -96,6 +98,7 @@ class Form(QWidget):
         vbox.addLayout(hbox)
         vbox.addStretch()
         #Status Msg
+        hbox = QtGui.QHBoxLayout()
         
         hbox.addWidget(QtGui.QLabel("Status message"))
         hbox.addStretch()
