@@ -5,20 +5,19 @@ import sys
 from PyQt4 import QtCore
 from PyQt4 import QtGui
 from PyQt4.QtCore import (Qt, SIGNAL)
-from PyQt4.QtGui import (QApplication, QDialog, QHBoxLayout, QLabel, QPushButton)
+from PyQt4.QtGui import (QApplication, QDialog, QWidget, QHBoxLayout, QLabel, QPushButton)
 from main_function import *
 
 import time
 
 
-class Form(QDialog):
-    def __init__(self, parent=None):
-        #Allow Qt to set up the object.
-        super(Form, self).__init__(parent)
+class Form(QWidget):
+    def __init__(self, parent=None, **kwargs):
+        super(Form, self).__init__(parent, **kwargs)
 
-       
-        #Flag for running "robotic_arm_algoritem()""
-        self._running = False
+        #set parameters for the timing the loop generator
+        self._generator = None
+        self._timerId = None
         #------------------------------------------
         #Msg that tell the user what the next move
         self.act_msg = QtGui.QLineEdit()
@@ -41,6 +40,10 @@ class Form(QDialog):
         self.stop_btn.setText("Stop")
         #self.stop_btn.setEnabled(False)
         self.connect(self.stop_btn,SIGNAL("clicked()"),self.stop_clicked)
+        #------------------------------------------
+        self.start_btn.setEnabled(True)
+        self.pause_btn.setEnabled(False)
+        self.stop_btn.setEnabled(False)
         #------------------------------------------
         #XY coordinates by the user choise
         self.addx = QtGui.QLineEdit()
@@ -111,18 +114,28 @@ class Form(QDialog):
         #get from detection, example: [310 , 410]
         src_coordinate = 310 , 410
         if(check_coordinates(dst_coordinate,src_coordinate,200)):
-            #self.start_btn.setEnabled(False)
-            #self.pause_btn.setEnabled(True)
-            #self.stop_btn.setEnabled(True)
+            self.start_btn.setEnabled(False)
+            self.pause_btn.setEnabled(True)
+            self.stop_btn.setEnabled(True)
             self.status_msg.setText("Running")
             self.act_msg.setText("Stand by")
-            self._running = True
+            #set parameters for the timing the loop generator
+            # Stop any existing timer
+            if self._timerId is not None:
+                self.killTimer(self._timerId)
+            self._generator = None
+            self._timerId = None
+            # Start the loop
+            self._generator = self.loopGenerator()
+            # This is the idle timer 
+            self._timerId = self.startTimer(0) 
+            
             
                 
         else:
-            #self.start_btn.setEnabled(True)
-            #self.pause_btn.setEnabled(False)
-            #self.stop_btn.setEnabled(False)
+            self.start_btn.setEnabled(True)
+            self.pause_btn.setEnabled(False)
+            self.stop_btn.setEnabled(False)
             self.status_msg.setText("Coordinates out of reach")
             self.act_msg.setText("Please choose coordinates")
 
@@ -132,32 +145,36 @@ class Form(QDialog):
 
     def pause_clicked(self):
         self.status_msg.setText("Paused")
-        #self.start_btn.setEnabled(True)
-        #self.pause_btn.setEnabled(False)
-        #self.stop_btn.setEnabled(True)
+        self.start_btn.setEnabled(True)
+        self.pause_btn.setEnabled(False)
+        self.stop_btn.setEnabled(True)
         self.act_msg.setText("Waiting for command")
-        #Stop robotic_arm_algoritem()
-        self._running = False
-
+        #set parameters for the timing the loop generator
+        # Stop any existing timer
+        if self._timerId is not None:
+            self.killTimer(self._timerId)
+        self._generator = None
+        self._timerId = None
         
-
         print "Pause clicked"
 
     def stop_clicked(self):
         self.status_msg.setText("Stoped")
-        #self.start_btn.setEnabled(True)
-        #self.pause_btn.setEnabled(False)
-        #self.stop_btn.setEnabled(False)
+        self.start_btn.setEnabled(True)
+        self.pause_btn.setEnabled(False)
+        self.stop_btn.setEnabled(False)
         self.act_msg.setText("Please choose coordinates")
         #Enter zero values to XY coordinates
         self.addx.setText('0')
         self.addy.setText('0')
-        #Stop robotic_arm_algoritem()
-        self._running = False
-
-        disable_arm()
-
         
+        disable_arm()
+        #set parameters for the timing the loop generator
+        # Stop any existing timer
+        if self._timerId is not None:
+            self.killTimer(self._timerId)
+        self._generator = None
+        self._timerId = None
 
         print "Stop clicked"
 
@@ -167,19 +184,41 @@ class Form(QDialog):
         y = event.pos().y()
         self.addy.setText(str(y))
         print ("x = ", x,"y = ", y)
+
+
+    def loopGenerator(self):
+        _iterations = 7 #enter the number of iterations
+        for a in range(_iterations):
+            a+=1
+
+            time.sleep(1)
+            print "Take picture"
+            time.sleep(1)
+            print "show picture"
+            time.sleep(1)
+            print "locate arm position"
+            time.sleep(1)
+            print "check success"
+            time.sleep(1)
+            print "calculate arm next move"
+            time.sleep(1)
+            print "command to the servo motors"
+
+            #"pause" the loop using yield
+            yield
+
+    
+    def timerEvent(self, event):
+        # This is called every time the GUI is idle.
+        if self._generator is None:
+            return
+        try:
+            next(self._generator)  # Run the next iteration
+        except StopIteration:
+            self.stop_clicked()  # Iteration has finshed, kill the timer
         
 
-    def status_check(self):
-        if self._running:
-            robotic_arm_algoritem()
-            return True
-        else:
-            return False
-        
-'''
-    def mousePressEvent(self, QMouseEvent):
-        print QMouseEvent.pos()
-'''
+
 
 #Allow command line arguments for your app
 app = QApplication(sys.argv)
