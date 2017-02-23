@@ -64,8 +64,8 @@ class Form(QWidget):
         #------------------------------------------
         
         #GUI format
-        vbox = QVBoxLayout()
-        hbox = QHBoxLayout()
+        vbox = QtGui.QVBoxLayout()
+        hbox = QtGui.QHBoxLayout()
         #Action Msg
         hbox.addWidget(QtGui.QLabel("Action message"))
         hbox.addStretch()
