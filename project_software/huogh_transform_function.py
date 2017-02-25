@@ -26,8 +26,8 @@ def get_color_mask(image,color):
         mask = cv2.inRange(hsv, lower_blue, upper_blue)
     elif color == 'green':
         # define range of green color in HSV
-        lower_green = np.array([50,50,50])
-        upper_green = np.array([70,255,255])
+        lower_green = np.array([40,50,50])
+        upper_green = np.array([60,255,255])
         # Threshold the HSV image to get only green colors
         mask = cv2.inRange(hsv, lower_green, upper_green)
     elif color =='yellow':
