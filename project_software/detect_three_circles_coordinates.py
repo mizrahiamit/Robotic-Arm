@@ -7,10 +7,10 @@ def main():
     # Take a image
     image = cv2.imread('two circles.jpg')
     image2 = image.copy()
-    #---------Detect Red Objects-------------
-    r_mask = get_color_mask(image,"red")
+    #---------Detect Blue Objects-------------
+    r_mask = get_color_mask(image,"blue")
     
-    #---------Detect Red circle-------------
+    #---------Detect Blue circle-------------
 
     circles = return_circles_values(r_mask)
     
@@ -21,7 +21,7 @@ def main():
         image2 = draw_circle(image2,circles)
         print circles
         
-        cv2.imwrite('detected red circles.jpg',image2)
+        cv2.imwrite('detected blue circles.jpg',image2)
     #---------Detect Green Objects-------------
     b_mask = get_color_mask(image,"green")
 
