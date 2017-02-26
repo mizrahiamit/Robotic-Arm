@@ -63,7 +63,7 @@ class Form(QWidget):
         #------------------------------------------
         #Show image
         self.l2=QtGui.QLabel()
-        self.l2.setPixmap(QtGui.QPixmap("detected circles.jpg"))
+        self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
         #Get pixel coordinates by right click on the mouse
         self.l2.mousePressEvent = self.getPos
         #------------------------------------------
