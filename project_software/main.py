@@ -25,6 +25,11 @@ class Form(QWidget):
         self.act_msg.setText("Please choose coordinates")
         #------------------------------------------
         #Start button
+        self.check_btn= QtGui.QPushButton()
+        self.check_btn.setText("Check system")
+        self.connect(self.start_btn,SIGNAL("clicked(bool)"),self.check_clicked)
+        #------------------------------------------
+        #Start button
         self.start_btn= QtGui.QPushButton()
         self.start_btn.setText("Start")
         self.connect(self.start_btn,SIGNAL("clicked(bool)"),self.start_clicked)
@@ -66,9 +71,12 @@ class Form(QWidget):
         #GUI format
         vbox = QtGui.QVBoxLayout()
         hbox = QtGui.QHBoxLayout()
+        #check for arm rdetection button
+        vbox.addWidget(self.check_btn)
+        vbox.addStretch()
         #Action Msg
         hbox.addWidget(QtGui.QLabel("Action message"))
-        hbox.addStretch()
+        #hbox.addStretch()
         hbox.addWidget(self.act_msg)
 
         vbox.addLayout(hbox)
@@ -101,7 +109,7 @@ class Form(QWidget):
         hbox = QtGui.QHBoxLayout()
         
         hbox.addWidget(QtGui.QLabel("Status message"))
-        hbox.addStretch()
+        #hbox.addStretch()
         hbox.addWidget(self.status_msg)
 
         vbox.addLayout(hbox)
