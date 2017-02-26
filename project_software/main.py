@@ -27,7 +27,7 @@ class Form(QWidget):
         #Start button
         self.check_btn= QtGui.QPushButton()
         self.check_btn.setText("Check system")
-        self.connect(self.start_btn,SIGNAL("clicked(bool)"),self.check_clicked)
+        
         #------------------------------------------
         #Start button
         self.start_btn= QtGui.QPushButton()
