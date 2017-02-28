@@ -3,6 +3,10 @@ import numpy as np
 import math
 import time
 
+from picamera.array import PiRGBArray
+import picamera
+
+
   
 def check_coordinates(dest_coor,arm_src_coor,arm_radius):
     #return true if move is possible, else false.
@@ -25,23 +29,14 @@ def disable_arm():
     print "Disabling arm"
     return True 
 #------------------------------------------------------
-'''
-def robotic_arm_algoritem():
-    
-    time.sleep(1)
-    print "Take picture"
-    time.sleep(1)
-    print "show picture"
-    time.sleep(1)
-    print "locate arm position"
-    time.sleep(1)
-    print "check success"
-    time.sleep(1)
-    print "calculate arm next move"
-    time.sleep(1)
-    print "command to the servo motors"
-
+def take_new_picture():
+    #with picamera.PiCamera() as camera:
+    camera=PiCamera(resolution = (640, 480))
+    #camera.resolution = (640, 480)
+    camera.start_preview()
+    # Camera warm-up time
+    time.sleep(2)
+    camera.capture('Test Image.jpg')
     return True
-'''
 
 #------------------------------------------------------
