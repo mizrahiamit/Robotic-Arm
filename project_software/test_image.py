@@ -1,4 +1,5 @@
 # import the necessary packages
+#The program take a picture with the camera and saved it to a file
 from picamera.array import PiRGBArray
 import picamera
 import time
