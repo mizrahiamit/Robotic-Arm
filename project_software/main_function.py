@@ -30,13 +30,12 @@ def disable_arm():
     return True 
 #------------------------------------------------------
 def take_new_picture():
-    #with picamera.PiCamera() as camera:
-    camera=PiCamera(resolution = (640, 480))
-    #camera.resolution = (640, 480)
-    camera.start_preview()
-    # Camera warm-up time
-    time.sleep(2)
-    camera.capture('Test Image.jpg')
+    with picamera.PiCamera() as camera:
+        camera.resolution = (640, 480)
+        camera.start_preview()
+        # Camera warm-up time
+        time.sleep(2)
+        camera.capture('Test Image.jpg')
     return True
 
 #------------------------------------------------------
