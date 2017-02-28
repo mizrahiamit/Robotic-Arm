@@ -1,3 +1,9 @@
+'''
+Name: main.py
+Author: Mizrahi Amit
+Last update:28/2/17
+Project: Camera Control XY Robotic Arm
+'''
 # Only needed for access to command line arguments
 import sys
 
@@ -220,6 +226,7 @@ class Form(QWidget):
 
             time.sleep(1)
             print "Take picture"
+            take_new_picture()
             time.sleep(1)
             print "show picture"
             time.sleep(1)

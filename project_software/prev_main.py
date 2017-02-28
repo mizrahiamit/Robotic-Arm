@@ -25,6 +25,11 @@ class Form(QWidget):
         self.act_msg.setText("Please choose coordinates")
         #------------------------------------------
         #Start button
+        self.check_btn= QtGui.QPushButton()
+        self.check_btn.setText("Check system")
+        
+        #------------------------------------------
+        #Start button
         self.start_btn= QtGui.QPushButton()
         self.start_btn.setText("Start")
         self.connect(self.start_btn,SIGNAL("clicked(bool)"),self.start_clicked)
@@ -58,43 +63,65 @@ class Form(QWidget):
         #------------------------------------------
         #Show image
         self.l2=QtGui.QLabel()
-        self.l2.setPixmap(QtGui.QPixmap("detected circles.jpg"))
+        self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
         #Get pixel coordinates by right click on the mouse
         self.l2.mousePressEvent = self.getPos
         #------------------------------------------
-        row = 1
+        
         #GUI format
-        grid=QtGui.QGridLayout()
+        vbox = QtGui.QVBoxLayout()
+        hbox = QtGui.QHBoxLayout()
+        #check for arm rdetection button
+        vbox.addWidget(self.check_btn)
+        vbox.addStretch()
         #Action Msg
-        grid.addWidget(QtGui.QLabel("Action message"),row,1,1,4)
+        hbox.addWidget(QtGui.QLabel("Action message"))
+        #hbox.addStretch()
+        hbox.addWidget(self.act_msg)
 
-        row=row+1
-        grid.addWidget(self.act_msg,row,1,1,4)
+        vbox.addLayout(hbox)
+        vbox.addStretch()
         #Start  Pause  Stop buttons
-        row=row+1
-        grid.addWidget(self.start_btn,row,1,1,1)
-        grid.addWidget(self.pause_btn,row,2,1,1)
-        grid.addWidget(self.stop_btn,row,3,1,1)
+        hbox = QtGui.QHBoxLayout()
+        
+        hbox.addWidget(self.start_btn)
+        hbox.addStretch()
+        hbox.addWidget(self.pause_btn)
+        hbox.addStretch()
+        hbox.addWidget(self.stop_btn)
+
+        vbox.addLayout(hbox)
+        vbox.addStretch()
         #XY coordinates
-        row=row+1
-        grid.addWidget(QtGui.QLabel("X_target ="),row,1,1,1)
-        grid.addWidget(self.addx,row,2,1,1)
-        grid.addWidget(QtGui.QLabel("Y_target ="),row,3,1,1)
-        grid.addWidget(self.addy,row,4,1,1)
+        hbox = QtGui.QHBoxLayout()
+        
+        hbox.addWidget(QtGui.QLabel("X_target ="))
+        hbox.addStretch()
+        hbox.addWidget(self.addx)
+        hbox.addStretch()
+        hbox.addWidget(QtGui.QLabel("Y_target ="))
+        hbox.addStretch()
+        hbox.addWidget(self.addy)
+
+        vbox.addLayout(hbox)
+        vbox.addStretch()
         #Status Msg
-        row=row+1
-        grid.addWidget(QtGui.QLabel("Status message"),row,1,1,4)
+        hbox = QtGui.QHBoxLayout()
+        
+        hbox.addWidget(QtGui.QLabel("Status message"))
+        #hbox.addStretch()
+        hbox.addWidget(self.status_msg)
 
-        row=row+1
-        grid.addWidget(self.status_msg,row,1,1,4)
+        vbox.addLayout(hbox)
+        vbox.addStretch()
         #Image
-        row=row+1
-        grid.addWidget(QtGui.QLabel("ROI image"),row,1,1,4)
+        
+        vbox.addWidget(QtGui.QLabel("ROI image"))
 
-        row=row+1
-        grid.addWidget(self.l2,row,1,8,6)
+        vbox.addStretch()
+        vbox.addWidget(self.l2)
 
-        self.setLayout(grid)
+        self.setLayout(vbox)
         #------------------------------------------
         #setGeometry(x,y,width,height)
         self.setGeometry(100,100,600,350)
