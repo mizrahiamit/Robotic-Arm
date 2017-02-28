@@ -242,6 +242,7 @@ class Form(QWidget):
 
             #"pause" the loop using yield
             yield
+        print "The arm did not reach the position after"+_iterations
 
     
     def timerEvent(self, event):
