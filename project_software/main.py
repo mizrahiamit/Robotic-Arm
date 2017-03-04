@@ -1,7 +1,7 @@
 '''
 Name: main.py
 Author: Mizrahi Amit
-Last update:28/2/17
+Last update:4/3/17
 Project: Camera Control XY Robotic Arm
 '''
 # Only needed for access to command line arguments
@@ -24,6 +24,11 @@ class Form(QWidget):
         #set parameters for the timing the loop generator
         self._generator = None
         self._timerId = None
+        #------------------------------------------
+        #Arm position parameters 
+        self._shoulder_pos = None,None
+        self._elbow_pos = None,None
+        self._wrist_pos = None,None
         #------------------------------------------
         #Msg that tell the user what the next move
         self.act_msg = QtGui.QLineEdit()
@@ -224,25 +229,30 @@ class Form(QWidget):
         for a in range(_iterations):
             a+=1
 
-            time.sleep(1)
             print "Take picture"
             take_new_picture()
-            self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
-            
             time.sleep(1)
+
             print "show picture"
+            self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
             time.sleep(1)
+
             print "locate arm position"
+            self._shoulder_pos , self._elbow_pos , self._wrist_pos = get_arm_position()
             time.sleep(1)
+
             print "check success"
             time.sleep(1)
+
             print "calculate arm next move"
             time.sleep(1)
+
             print "command to the servo motors"
+            time.sleep(1)
 
             #"pause" the loop using yield
             yield
-        print "The arm did not reach the position after"+_iterations
+        print "The arm did not reach the position after"+str(_iterations)
 
     
     def timerEvent(self, event):
