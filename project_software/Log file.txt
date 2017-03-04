@@ -9,7 +9,7 @@ Project: Camera Control XY Robotic Arm
 			  Arm position parameters 
 			  locate arm position
 
-			  update image processing functions.py-
+			  update_image_processing functions.py-
 			  def get_arm_position()
 			  def detect_circle_by_color()
 			  def get_color_mask()

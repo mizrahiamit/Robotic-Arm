@@ -1,5 +1,5 @@
 '''
-Name: image processing functions.py
+Name: image_processing_functions.py
 Author: Mizrahi Amit
 Last update:4/3/17
 Project: Camera Control XY Robotic Arm
