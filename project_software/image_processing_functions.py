@@ -61,7 +61,8 @@ def return_circles_values(img):
 def detect_circle_by_color(color,image):
     mask = get_color_mask(image,color)
     circles = return_circles_values(mask)
-    x,y,r = circles
+    x = circles[0][0][1]
+    y = circles[0][0][2]
 
     return x,y
 
