@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 import math
-import time
+
 
 from picamera.array import PiRGBArray
 import picamera
@@ -38,4 +38,13 @@ def take_new_picture():
         camera.capture('Test Image.jpg')
     return True
 
-#------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
