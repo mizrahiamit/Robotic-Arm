@@ -72,11 +72,11 @@ def get_arm_position():
     image = cv2.imread('two circles.jpg')
 
     pos1 = detect_circle_by_color('yellow',image)#Shoulder
-    print pos1
+    
     pos2 = detect_circle_by_color('blue',image)#Elobow
-    print pos2
+    
     pos3 = detect_circle_by_color('green',image)#Wirst
-    print pos3
+    
     
     return pos1,pos2,pos3
 
