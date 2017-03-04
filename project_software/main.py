@@ -13,6 +13,7 @@ from PyQt4 import QtGui
 from PyQt4.QtCore import (Qt, SIGNAL)
 from PyQt4.QtGui import (QApplication, QDialog, QWidget, QHBoxLayout, QLabel, QPushButton)
 from main_function import *
+from image processing functions import *
 
 import time
 
