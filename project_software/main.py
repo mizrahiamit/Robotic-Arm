@@ -240,6 +240,11 @@ class Form(QWidget):
 
             print "locate arm position"
             self._shoulder_pos , self._elbow_pos , self._wrist_pos = get_arm_position()
+            print self._shoulder_pos
+            print self._elbow_pos
+            print self._wrist_pos
+
+
             time.sleep(1)
 
             print "check success"
