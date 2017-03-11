@@ -18,5 +18,5 @@ Project: Camera Control XY Robotic Arm
 11.3.17 18:51:Update main,py - 
 			  print "show picture"
               img = cv2.imread("Test Image.jpg")
-              cv2.line(img,(addx+5,addy),(addx-5,addy),(255,255,255),50)
-              cv2.line(img,(addx,addy+5),(addx,addy-5),(255,255,255),50)
+              cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
+              cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)

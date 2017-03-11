@@ -31,6 +31,10 @@ class Form(QWidget):
         self._elbow_pos = None,None
         self._wrist_pos = None,None
         #------------------------------------------
+        #Target Coordinates
+        self._x_pos = 0
+        self._y_pos = 0
+        #------------------------------------------
         #Msg that tell the user what the next move
         self.act_msg = QtGui.QLineEdit()
         self.act_msg.setObjectName("act_msg")
@@ -218,11 +222,11 @@ class Form(QWidget):
         print "Stop clicked"
 
     def getPos(self, event):
-        x = event.pos().x()
-        self.addx.setText(str(x))
-        y = event.pos().y()
-        self.addy.setText(str(y))
-        print ("x = ", x,"y = ", y)
+        _x_pos = event.pos().x()
+        self.addx.setText(str(_x_pos))
+        _y_pos = event.pos().y()
+        self.addy.setText(str(_y_pos))
+        print ("x = ", _x_pos,"y = ", _y_pos)
 
 
     def loopGenerator(self):
@@ -236,8 +240,8 @@ class Form(QWidget):
 
             print "show picture"
             img = cv2.imread("Test Image.jpg")
-            cv2.line(img,(int(self.addx)+5,int(self.addy)),(int(self.addx)-5,int(self.addy)),(255,255,255),50)
-            cv2.line(img,(int(self.addx),int(self.addy)+5),(int(self.addx),int(self.addy)-5),(255,255,255),50)
+            cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
+            cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
             self.l2.setPixmap(QtGui.QPixmap(img))
             time.sleep(1)
 
