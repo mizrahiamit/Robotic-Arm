@@ -7,7 +7,7 @@ import time
 from picamera.array import PiRGBArray
 import picamera
 
-import PiRGBArray
+
 
 
   
