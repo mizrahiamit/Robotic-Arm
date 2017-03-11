@@ -47,8 +47,8 @@ def take_new_picture(_x_pos,_y_pos):
     image = cv2.imdecode(data, 1)
     # OpenCV returns an array with data in BGR order. If you want RGB instead
 
-    cv2.line(image,(_x_pos+10,_y_pos),(_x_pos-10,_y_pos),(0,0,255),2)
-    cv2.line(image,(_x_pos,_y_pos+10),(_x_pos,_y_pos-10),(0,0,255),2)
+    cv2.line(image,(_x_pos+10,_y_pos),(_x_pos-10,_y_pos),(0,0,255),1)
+    cv2.line(image,(_x_pos,_y_pos+10),(_x_pos,_y_pos-10),(0,0,255),1)
     cv2.imwrite("Test Image.jpg",image)
         
     return True
