@@ -236,8 +236,8 @@ class Form(QWidget):
 
             print "show picture"
             img = cv2.imread("Test Image.jpg")
-            cv2.line(img,(self.addx+5,self.addy),(self.addx-5,self.addy),(255,255,255),50)
-            cv2.line(img,(self.addx,self.addy+5),(self.addx,self.addy-5),(255,255,255),50)
+            cv2.line(img,(int(self.addx)+5,int(self.addy)),(int(self.addx)-5,int(self.addy)),(255,255,255),50)
+            cv2.line(img,(int(self.addx),int(self.addy)+5),(int(self.addx),int(self.addy)-5),(255,255,255),50)
             self.l2.setPixmap(QtGui.QPixmap(img))
             time.sleep(1)
 
