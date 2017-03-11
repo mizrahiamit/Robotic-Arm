@@ -42,7 +42,7 @@ def take_new_picture(_x_pos,_y_pos):
         time.sleep(2)
         camera.capture(stream, format='jpeg')
     # Construct a numpy array from the stream
-    data = np.array(np.fromstring(stream.getvalue(), dtype=np.uint8))
+    data = np.fromstring(stream.getvalue(), dtype=np.uint8)
     # "Decode" the image from the array, preserving colour
     image = cv2.imdecode(data, 1)
     # OpenCV returns an array with data in BGR order. If you want RGB instead
@@ -62,8 +62,8 @@ def take_new_picture(_x_pos,_y_pos):
             camera.capture(output, 'rgb')
             img = np.frombuffer(output, dtype=np.uint8, count=640*480).reshape(480, 640)
 '''
-    cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
-    cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
+    #cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
+    #cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
     cv2.imwrite("Test Image.jpg",img)
         
     return True
