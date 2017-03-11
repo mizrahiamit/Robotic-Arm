@@ -1,5 +1,6 @@
 import sys
 import numpy as np
+import cv2
 import math
 import time
 
@@ -29,13 +30,17 @@ def disable_arm():
     print "Disabling arm"
     return True 
 #------------------------------------------------------
-def take_new_picture():
+def take_new_picture(_x_pos,_y_pos):
+    img = cv2.imread("Test Image.jpg")
     with picamera.PiCamera() as camera:
         camera.resolution = (640, 480)
         camera.start_preview()
         # Camera warm-up time
         time.sleep(2)
-        camera.capture('Test Image.jpg')
+        camera.capture(img)
+    cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
+    cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
+    img = cv2.iwrite("Test Image.jpg")
         
     return True
 

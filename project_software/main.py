@@ -235,14 +235,11 @@ class Form(QWidget):
             a+=1
 
             print "Take picture"
-            take_new_picture()
+            take_new_picture(self._x_pos,self._y_pos)
             time.sleep(1)
 
             print "show picture"
-            img = cv2.imread("Test Image.jpg")
-            cv2.line(img,(self._x_pos+5,self._y_pos),(self._x_pos-5,self._y_pos),(255,255,255),50)
-            cv2.line(img,(self._x_pos,self._y_pos+5),(self._x_pos,self._y_pos-5),(255,255,255),50)
-            self.l2.setPixmap(QtGui.QPixmap(img))
+            self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
             time.sleep(1)
 
             print "locate arm position"
