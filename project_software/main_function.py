@@ -37,6 +37,7 @@ def take_new_picture(_x_pos,_y_pos):
     # Create the in-memory stream
     stream = io.BytesIO()
     with picamera.PiCamera() as camera:
+        camera.resolution = (640, 480)
         camera.start_preview()
         time.sleep(2)
         camera.capture(stream, format='jpeg')
