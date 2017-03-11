@@ -222,10 +222,10 @@ class Form(QWidget):
         print "Stop clicked"
 
     def getPos(self, event):
-        _x_pos = event.pos().x()
-        self.addx.setText(str(_x_pos))
-        _y_pos = event.pos().y()
-        self.addy.setText(str(_y_pos))
+        self._x_pos = event.pos().x()
+        self.addx.setText(str(self._x_pos))
+        self._y_pos = event.pos().y()
+        self.addy.setText(str(self._y_pos))
         print ("x = ", _x_pos,"y = ", _y_pos)
 
 
