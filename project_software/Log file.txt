@@ -15,8 +15,24 @@ Project: Camera Control XY Robotic Arm
 			  def get_color_mask()
 			  def return_circles_values()
 
-11.3.17 18:51:Update main,py - 
-			  print "show picture"
-              img = cv2.imread("Test Image.jpg")
-              cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
-              cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
+11.3.17 18:51:Update main_function.py - 
+			  
+             def take_new_picture(_x_pos,_y_pos):
+			    # Create the in-memory stream
+			    stream = io.BytesIO()
+			    with picamera.PiCamera() as camera:
+			        camera.resolution = (640, 480)
+			        camera.start_preview()
+			        time.sleep(2)
+			        camera.capture(stream, format='jpeg')
+			    # Construct a numpy array from the stream
+			    data = np.fromstring(stream.getvalue(), dtype=np.uint8)
+			    # "Decode" the image from the array, preserving colour
+			    image = cv2.imdecode(data, 1)
+			    # OpenCV returns an array with data in BGR order. If you want RGB instead
+
+			    cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
+			    cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
+			    cv2.imwrite("Test Image.jpg",image)
+			        
+			    return True
