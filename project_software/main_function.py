@@ -29,7 +29,7 @@ def disable_arm():
     print "Disabling arm"
     return True 
 #------------------------------------------------------
-def take_new_picture(posX,posY):
+def take_new_picture():
     with picamera.PiCamera() as camera:
         camera.resolution = (640, 480)
         camera.start_preview()
