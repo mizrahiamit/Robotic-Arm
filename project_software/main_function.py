@@ -46,24 +46,9 @@ def take_new_picture(_x_pos,_y_pos):
     # "Decode" the image from the array, preserving colour
     image = cv2.imdecode(data, 1)
     # OpenCV returns an array with data in BGR order. If you want RGB instead
-    # use the following...
-    #img = image[:, :, ::-1]
 
-    '''
-    with picamera.PiCamera() as camera:
-        with picamera.array.PiRGBArray(camera) as output:
-            camera.resolution = (640, 480)
-            #camera.framerate = 24
-            camera.start_preview()
-            # Camera warm-up time
-            time.sleep(2)
-            #output = PiRGBArray(camera, size=(640,480))
-            #output = np.empty((640, 480, 3), dtype=np.uint8)
-            camera.capture(output, 'rgb')
-            img = np.frombuffer(output, dtype=np.uint8, count=640*480).reshape(480, 640)
-'''
-    #cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
-    #cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
+    cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
+    cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
     cv2.imwrite("Test Image.jpg",image)
         
     return True
