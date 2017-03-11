@@ -42,10 +42,11 @@ def take_new_picture(_x_pos,_y_pos):
         output = PiRGBArray(camera, size=(640,480))
         #output = np.empty((640, 480, 3), dtype=np.uint8)
         camera.capture(output, 'rgb')
+        img = np.frombuffer(output, dtype=uint8, count=640*480).reshape(480, 640)
 
-        cv2.line(output,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
-        cv2.line(output,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
-        cv2.iwrite("Test Image.jpg",output)
+        cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
+        cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
+        cv2.iwrite("Test Image.jpg",img)
     
 
         
