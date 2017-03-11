@@ -37,7 +37,7 @@ def take_new_picture(_x_pos,_y_pos):
         # Camera warm-up time
         time.sleep(2)
         output = np.empty((640, 480, 3), dtype=np.uint8)
-        camera.capture(output, 'rgb'))
+        camera.capture(output, 'rgb')
 
         cv2.line(output,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
         cv2.line(output,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
