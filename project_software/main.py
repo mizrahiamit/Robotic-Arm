@@ -226,7 +226,7 @@ class Form(QWidget):
         self.addx.setText(str(self._x_pos))
         self._y_pos = event.pos().y()
         self.addy.setText(str(self._y_pos))
-        print ("x = ", _x_pos,"y = ", _y_pos)
+        print ("x = ", self._x_pos,"y = ", self._y_pos)
 
 
     def loopGenerator(self):
