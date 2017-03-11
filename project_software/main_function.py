@@ -64,7 +64,7 @@ def take_new_picture(_x_pos,_y_pos):
 '''
     #cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
     #cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
-    cv2.imwrite("Test Image.jpg",img)
+    cv2.imwrite("Test Image.jpg",image)
         
     return True
 
