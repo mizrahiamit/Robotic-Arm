@@ -31,7 +31,7 @@ def disable_arm():
     return True 
 #------------------------------------------------------
 def take_new_picture(_x_pos,_y_pos):
-    img = cv2.imread("Test Image.jpg")
+    img = open('Test Image.jpg', 'wb')
     with picamera.PiCamera() as camera:
         camera.resolution = (640, 480)
         camera.start_preview()
@@ -40,7 +40,9 @@ def take_new_picture(_x_pos,_y_pos):
         camera.capture(img)
     cv2.line(img,(_x_pos+5,_y_pos),(_x_pos-5,_y_pos),(255,255,255),50)
     cv2.line(img,(_x_pos,_y_pos+5),(_x_pos,_y_pos-5),(255,255,255),50)
-    img = cv2.iwrite("Test Image.jpg")
+    cv2.iwrite("Test Image.jpg",img)
+    img.close()
+
         
     return True
 
