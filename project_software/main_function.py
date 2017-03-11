@@ -47,7 +47,7 @@ def take_new_picture(_x_pos,_y_pos):
     image = cv2.imdecode(data, 1)
     # OpenCV returns an array with data in BGR order. If you want RGB instead
     # use the following...
-    img = image[:, :, ::-1]
+    #img = image[:, :, ::-1]
 
     '''
     with picamera.PiCamera() as camera:
