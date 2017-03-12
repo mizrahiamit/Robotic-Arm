@@ -150,14 +150,18 @@ class Form(QWidget):
 
 
     def check_clicked(self):
+        print "taking new picture"
         take_new_picture(0,0)
+        print "get arm position"
         self._shoulder_pos,self._elbow_pos,self._wrist_pos=get_arm_position()
 
         if (self._shoulder_pos==(None,None)) or (self._elbow_pos==(None,None)) or (self._wrist_pos==(None,None)):  
+            print "Robotic arm was not recognized "
             self.act_msg="Please try again"
             self.status_msg="Robotic arm was not recognized"
             return False
         else:
+            print "Robotic arm was not recognized"
             self._arm_radius = math.hypot(_wrist_pos[0] - _shoulder_pos[0], _wrist_pos[1] - _shoulder_pos[1])
             self.start_btn.setEnabled(True)
             self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
