@@ -15,18 +15,13 @@ import picamera
 def check_coordinates(dest_coor,arm_src_coor,arm_radius):
     #return true if move is possible, else false.
     print "Checking if move is possible"
-    #first condition: coordinates must be in the frame 640x480
-    if (dest_coor[0] < 640) or (dest_coor[1] < 480) or (dest_coor[0] == 0 ) or (dest_coor[1] == 0 ):
-        #second condition: coordinates must be in arm region
-        delta_x = abs(dest_coor[1]-arm_src_coor[0])
-        delta_y = abs(dest_coor[1]-arm_src_coor[0])
-        distance = math.sqrt( pow(delta_y,2) + pow(delta_x,2) )
-        if distance< arm_radius :
-            return  True
-        else:
-            return False
+    distance = math.hypot(dest_coor[0] - arm_src_coor[0], dest_coor[1] - arm_src_coor[1])
+    if (distance < arm_radius):
+        return True
     else:
         return False
+        
+    
 #------------------------------------------------------
 def disable_arm():
     #disabling pwm port, to the servo motors.
@@ -46,9 +41,10 @@ def take_new_picture(_x_pos,_y_pos):
     # "Decode" the image from the array, preserving colour
     image = cv2.imdecode(data, 1)
     # OpenCV returns an array with data in BGR order. If you want RGB instead
+    if (_x_pos!=0) or (_y_pos!=0):
+        cv2.line(image,(_x_pos+10,_y_pos),(_x_pos-10,_y_pos),(0,0,255),1)
+        cv2.line(image,(_x_pos,_y_pos+10),(_x_pos,_y_pos-10),(0,0,255),1)
 
-    cv2.line(image,(_x_pos+10,_y_pos),(_x_pos-10,_y_pos),(0,0,255),1)
-    cv2.line(image,(_x_pos,_y_pos+10),(_x_pos,_y_pos-10),(0,0,255),1)
     cv2.imwrite("Test Image.jpg",image)
         
     return True

@@ -16,6 +16,7 @@ from main_function import *
 from image_processing_functions import *
 
 import time
+import math
 
 
 class Form(QWidget):
@@ -30,6 +31,8 @@ class Form(QWidget):
         self._shoulder_pos = None,None
         self._elbow_pos = None,None
         self._wrist_pos = None,None
+
+        self._arm_radius = 0.00
         #------------------------------------------
         #Target Coordinates
         self._x_pos = 0
@@ -43,7 +46,7 @@ class Form(QWidget):
         #Start button
         self.check_btn= QtGui.QPushButton()
         self.check_btn.setText("Check system")
-        
+        self.connect(self.check_btn,SIGNAL("clicked()"),self.check_clicked)
         #------------------------------------------
         #Start button
         self.start_btn= QtGui.QPushButton()
@@ -62,7 +65,7 @@ class Form(QWidget):
         #self.stop_btn.setEnabled(False)
         self.connect(self.stop_btn,SIGNAL("clicked()"),self.stop_clicked)
         #------------------------------------------
-        self.start_btn.setEnabled(True)
+        self.start_btn.setEnabled(False)
         self.pause_btn.setEnabled(False)
         self.stop_btn.setEnabled(False)
         #------------------------------------------
@@ -146,17 +149,34 @@ class Form(QWidget):
 
 
 
-        
+    def check_clicked(self):
+        take_new_picture(0,0)
+        self._shoulder_pos,self._elbow_pos,self._wrist_pos=get_arm_position()
+
+        if (self._shoulder_pos==(None,None)) or (self._elbow_pos==(None,None)) or (self._wrist_pos==(None,None)):  
+            self.act_msg="Please try again"
+            self.status_msg="Robotic arm was not recognized"
+            return False
+        else:
+            self._arm_radius = math.hypot(_wrist_pos[0] - _shoulder_pos[0], _wrist_pos[1] - _shoulder_pos[1])
+            self.start_btn.setEnabled(True)
+            self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
+            self.act_msg="Please choose coordinates"
+            self.status_msg="Setup is ready"
+            return True
+
+
+
 
     def start_clicked(self,bool):
         self.status_msg.setText("Start clicked")
         print "Start clicked"
         
-        dst_coordinate = int(self.addx.text()) , int(self.addy.text())
- 
-        #get from detection, example: [310 , 410]
-        src_coordinate = 310 , 410
-        if(check_coordinates(dst_coordinate,src_coordinate,200)):
+        dst_coordinate = self._x_pos , self._y_pos
+        src_coordinate = self._shoulder_pos
+        radius = self._arm_radius 
+
+        if(check_coordinates(dst_coordinate,src_coordinate,radius)):
             self.start_btn.setEnabled(False)
             self.pause_btn.setEnabled(True)
             self.stop_btn.setEnabled(True)
@@ -209,7 +229,9 @@ class Form(QWidget):
         self.act_msg.setText("Please choose coordinates")
         #Enter zero values to XY coordinates
         self.addx.setText('0')
+        self._x_pos = 0
         self.addy.setText('0')
+        self._y_pos = 0
         
         disable_arm()
         #set parameters for the timing the loop generator
