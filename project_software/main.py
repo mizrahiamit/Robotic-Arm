@@ -160,21 +160,18 @@ class Form(QWidget):
         
         if (self._shoulder_pos==(None,None)) or (self._elbow_pos==(None,None)) or (self._wrist_pos==(None,None)):  
             print "Robotic arm was not recognized "
-            self.act_msg="Please try again"
-            self.status_msg="Robotic arm was not recognized"
+            self.act_msg.setText"Please try again")
+            self.status_msg.setText("Robotic arm was not recognized")
             return False
         else:
-            print "Robotic arm was not recognized"
+            print "Robotic arm was recognized"
             self._arm_radius = math.hypot(self._wrist_pos[0] - self._shoulder_pos[0], self._wrist_pos[1] - self._shoulder_pos[1])
             print "radius", self._arm_radius
             self.start_btn.setEnabled(True)
             self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
-            self.act_msg="Please choose coordinates"
-            self.status_msg="Setup is ready"
+            self.act_msg.setText("Please choose coordinates")
+            self.status_msg.setText("Setup is ready")
             return True
-
-
-
 
     def start_clicked(self,bool):
         self.status_msg.setText("Start clicked")
