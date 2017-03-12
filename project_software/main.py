@@ -154,7 +154,10 @@ class Form(QWidget):
         take_new_picture(0,0)
         print "get arm position"
         self._shoulder_pos,self._elbow_pos,self._wrist_pos=get_arm_position()
-
+        print self._shoulder_pos
+        print self._elbow_pos
+        print self._wrist_pos
+        
         if (self._shoulder_pos==(None,None)) or (self._elbow_pos==(None,None)) or (self._wrist_pos==(None,None)):  
             print "Robotic arm was not recognized "
             self.act_msg="Please try again"
@@ -163,6 +166,7 @@ class Form(QWidget):
         else:
             print "Robotic arm was not recognized"
             self._arm_radius = math.hypot(self._wrist_pos[0] - self._shoulder_pos[0], self._wrist_pos[1] - self._shoulder_pos[1])
+            print "radius", self._arm_radius
             self.start_btn.setEnabled(True)
             self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
             self.act_msg="Please choose coordinates"
