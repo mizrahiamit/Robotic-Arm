@@ -160,7 +160,7 @@ class Form(QWidget):
         
         if (self._shoulder_pos==(None,None)) or (self._elbow_pos==(None,None)) or (self._wrist_pos==(None,None)):  
             print "Robotic arm was not recognized "
-            self.act_msg.setText"Please try again")
+            self.act_msg.setText("Please try again")
             self.status_msg.setText("Robotic arm was not recognized")
             return False
         else:
