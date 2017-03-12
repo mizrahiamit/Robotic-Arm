@@ -86,8 +86,8 @@ def detect_circle_by_color(color,image):
         x = None
         y = None
     else:
+        x = circles[0][0][0]
         y = circles[0][0][1]
-        x = circles[0][0][2]
 
     return x,y
 
