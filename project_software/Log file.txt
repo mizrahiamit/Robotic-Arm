@@ -36,3 +36,66 @@ Project: Camera Control XY Robotic Arm
 			    cv2.imwrite("Test Image.jpg",image)
 			        
 			    return True
+
+11.3.17 17:30:Update main.py - 
+				self.connect(self.check_btn,SIGNAL("clicked()"),self.check_clicked)
+
+				self.start_btn.setEnabled(False)
+
+				def check_clicked(self):
+			        take_new_picture(0,0)
+			        self._shoulder_pos,self._elbow_pos,self._wrist_pos=get_arm_position()
+
+			        if (self._shoulder_pos==[None,None]) or (self._elbow_pos==[None,None]) or (self._wrist_pos==[None,None]):  
+			            self.act_msg="Please try again"
+			            self.status_msg="Robotic arm was not recognized"
+			            return False
+			        else:
+			            self.act_msg="Please choose coordinates"
+			            self.status_msg="Setup is ready"
+			            return True
+
+
+
+
+			    self._arm_radius = 0.00
+
+			    def start_clicked(self,bool):
+			        self.status_msg.setText("Start clicked")
+			        print "Start clicked"
+			        
+			        dst_coordinate = self._x_pos , self._y_pos
+			        src_coordinate = self._shoulder_pos
+			        radius = self._arm_radius 
+
+			        if(check_coordinates(dst_coordinate,src_coordinate,radius)):
+
+			        def check_clicked(self):
+				        take_new_picture(0,0)
+				        self._shoulder_pos,self._elbow_pos,self._wrist_pos=get_arm_position()
+
+				        if (self._shoulder_pos==(None,None)) or (self._elbow_pos==(None,None)) or (self._wrist_pos==(None,None)):  
+				            self.act_msg="Please try again"
+				            self.status_msg="Robotic arm was not recognized"
+				            return False
+				        else:
+				            self._arm_radius = math.hypot(_wrist_pos[0] - _shoulder_pos[0], _wrist_pos[1] - _shoulder_pos[1])
+				            self.start_btn.setEnabled(True)
+				            self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
+				            self.act_msg="Please choose coordinates"
+				            self.status_msg="Setup is ready"
+				            return True
+
+
+			    Update main_function.py-
+			    	def check_coordinates(dest_coor,arm_src_coor,arm_radius):
+					    #return true if move is possible, else false.
+					    print "Checking if move is possible"
+					 
+					    distance = math.hypot(dest_coor[0] - arm_src_coor[0], dest_coor[1] - arm_src_coor[1])
+					    if (distance < arm_radius):
+					        return True
+					    else:
+					        return False
+
+
