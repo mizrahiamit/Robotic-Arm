@@ -71,19 +71,27 @@ Project: Camera Control XY Robotic Arm
 			        if(check_coordinates(dst_coordinate,src_coordinate,radius)):
 
 			        def check_clicked(self):
+				        print "taking new picture"
 				        take_new_picture(0,0)
+				        print "get arm position"
 				        self._shoulder_pos,self._elbow_pos,self._wrist_pos=get_arm_position()
-
+				        print self._shoulder_pos
+				        print self._elbow_pos
+				        print self._wrist_pos
+				        
 				        if (self._shoulder_pos==(None,None)) or (self._elbow_pos==(None,None)) or (self._wrist_pos==(None,None)):  
-				            self.act_msg="Please try again"
-				            self.status_msg="Robotic arm was not recognized"
+				            print "Robotic arm was not recognized "
+				            self.act_msg.setText("Please try again")
+				            self.status_msg.setText("Robotic arm was not recognized")
 				            return False
 				        else:
-				            self._arm_radius = math.hypot(_wrist_pos[0] - _shoulder_pos[0], _wrist_pos[1] - _shoulder_pos[1])
+				            print "Robotic arm was recognized"
+				            self._arm_radius = math.hypot(self._wrist_pos[0] - self._shoulder_pos[0], self._wrist_pos[1] - self._shoulder_pos[1])
+				            print "radius", self._arm_radius
 				            self.start_btn.setEnabled(True)
 				            self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
-				            self.act_msg="Please choose coordinates"
-				            self.status_msg="Setup is ready"
+				            self.act_msg.setText("Please choose coordinates")
+				            self.status_msg.setText("Setup is ready")
 				            return True
 
 
@@ -97,5 +105,9 @@ Project: Camera Control XY Robotic Arm
 					        return True
 					    else:
 					        return False
+
+			    Update image_processing_functions.py-
+			    	x = circles[0][0][0]
+        			y = circles[0][0][1]
 
 
