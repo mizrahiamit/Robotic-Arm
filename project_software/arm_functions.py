@@ -15,7 +15,7 @@ def cal_next_move(_deviation, _distance, _wrist_pos, _shoulder_pos, _x_pos, _y_p
 		m2_change = -0.5 # -9 degrees
 		print "motor2 -9 deg"
 
-	if (cover_radius < (_deviation -5)):
+	elif (cover_radius < (_deviation -5)):
 		m1_change =  0
 		m2_change = +0.5 # +9 degrees
 		print "motor2 +9 deg"
