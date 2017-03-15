@@ -1,7 +1,7 @@
 '''
 Name: main.py
 Author: Mizrahi Amit
-Last update:4/3/17
+Last update:15/3/17
 Project: Camera Control XY Robotic Arm
 '''
 # Only needed for access to command line arguments
@@ -10,6 +10,8 @@ from PyQt4 import QtCore
 from PyQt4 import QtGui
 from PyQt4.QtCore import (Qt, SIGNAL)
 from PyQt4.QtGui import (QApplication, QDialog, QWidget, QHBoxLayout, QLabel, QPushButton)
+
+import RPi.GPIO as IO
 
 from main_function import *
 from image_processing_functions import *
