@@ -5,24 +5,22 @@ Last update:4/3/17
 Project: Camera Control XY Robotic Arm
 '''
 # Only needed for access to command line arguments
-import sys
-
 
 from PyQt4 import QtCore
 from PyQt4 import QtGui
 from PyQt4.QtCore import (Qt, SIGNAL)
 from PyQt4.QtGui import (QApplication, QDialog, QWidget, QHBoxLayout, QLabel, QPushButton)
+
 from main_function import *
 from image_processing_functions import *
-
-import time
-import math
+from arm_functions import *
 
 
 class Form(QWidget):
     def __init__(self, parent=None, **kwargs):
         super(Form, self).__init__(parent, **kwargs)
 
+        self._iterations = 20 #enter the number of iterations
         #set parameters for the timing the loop generator
         self._generator = None
         self._timerId = None
@@ -37,6 +35,33 @@ class Form(QWidget):
         #Target Coordinates
         self._x_pos = 0
         self._y_pos = 0
+        #------------------------------------------
+        #------------------------------------------
+        #------------------------------------------
+        #Servo configuration
+        IO.setwarnings(False)
+        IO.setmode(IO.BCM)
+
+        #Output ports
+        IO.setup(14, IO.OUT)#Conrol Motor1
+        IO.setup(18, IO.OUT)#Conrol Motor2
+
+        #Freq=50Hz
+        self.pwm_m1 = IO.PWM(14,50)
+        self.pwm_m2 = IO.PWM(18,50)
+
+        self.m1_dc = 7.5 #7.5% duty cycle - 90 degrees
+        self.m2_dc = 12.5 #12.5% duty cycle - 180 degrees
+
+        self.pwm_m1.start(self.m1_dc)
+        self.pwm_m2.start(self.m2_dc)
+        #------------------------------------------
+        #Arm configuration
+        self._deviation = 640.0 #The distance between the wirst to destination
+        #self._cover_radius = 640.0 #The distance between the wirst to the shoulder
+        self._distance = 0 #the distance between the shoulder to the destination
+        #------------------------------------------
+        #------------------------------------------
         #------------------------------------------
         #Msg that tell the user what the next move
         self.act_msg = QtGui.QLineEdit()
@@ -148,7 +173,9 @@ class Form(QWidget):
         self.setWindowTitle("Camera Control XY Robotic Arm")
 
 
-
+    #------------------------------------------------------------
+    #------------------------------------------------------------
+    #------------------------------------------------------------
     def check_clicked(self):
         print "taking new picture"
         take_new_picture(0,0)
@@ -172,7 +199,7 @@ class Form(QWidget):
             self.act_msg.setText("Please choose coordinates")
             self.status_msg.setText("Setup is ready")
             return True
-
+    #------------------------------------------------------------
     def start_clicked(self,bool):
         self.status_msg.setText("Start clicked")
         print "Start clicked"
@@ -181,7 +208,8 @@ class Form(QWidget):
         src_coordinate = self._shoulder_pos
         radius = self._arm_radius 
 
-        if(check_coordinates(dst_coordinate,src_coordinate,radius)):
+        self._distance = check_coordinates(dst_coordinate,src_coordinate,radius)
+        if(self._distance != 600):
             self.start_btn.setEnabled(False)
             self.pause_btn.setEnabled(True)
             self.stop_btn.setEnabled(True)
@@ -210,7 +238,7 @@ class Form(QWidget):
             self.addx.setText('0')
             self.addy.setText('0')
 
-
+    #------------------------------------------------------------
     def pause_clicked(self):
         self.status_msg.setText("Paused")
         self.start_btn.setEnabled(True)
@@ -225,7 +253,7 @@ class Form(QWidget):
         self._timerId = None
         
         print "Pause clicked"
-
+    #------------------------------------------------------------
     def stop_clicked(self):
         self.status_msg.setText("Stoped")
         self.start_btn.setEnabled(True)
@@ -248,6 +276,8 @@ class Form(QWidget):
 
         print "Stop clicked"
 
+    #------------------------------------------------------------
+    #------------------------------------------------------------
     def getPos(self, event):
         self._x_pos = event.pos().x()
         self.addx.setText(str(self._x_pos))
@@ -255,10 +285,12 @@ class Form(QWidget):
         self.addy.setText(str(self._y_pos))
         print ("x = ", self._x_pos,"y = ", self._y_pos)
 
-
+    #------------------------------------------------------------
+    #------------------------------------------------------------
+    #------------------------------------------------------------
     def loopGenerator(self):
-        _iterations = 7 #enter the number of iterations
-        for a in range(_iterations):
+        
+        for a in range(self._iterations):
             a+=1
 
             print "Take picture"
@@ -279,19 +311,37 @@ class Form(QWidget):
             time.sleep(1)
 
             print "check success"
+            self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
+            if (sel._deviation < 5):
+                self.status_msg.setText("Success")
+                time.sleep(30)
+                '''
+                self.status_msg.setText("Stand By")
+                self.act_msg.setText("Please choose coordinates")
+                self._x_pos = 0
+                self.addx.setText('0')
+                self._y_pos = 0
+                self.addy.setText('0')
+                '''
+                break
             time.sleep(1)
 
             print "calculate arm next move"
+            m1_change,m2_change = cal_next_move(self._deviation, self._distance, self._wrist_pos, self._shoulder_pos, self._x_pos, self._y_pos)
+            self.m1_dc = self.m1_dc + m1_change
+            self.m2_dc = self.m2_dc + m2_change
             time.sleep(1)
 
             print "command to the servo motors"
+            pwm_m1.ChangeDutyCycle(self.m1_dc)
+            pwm_m2.ChangeDutyCycle(self.m2_dc)
             time.sleep(1)
 
             #"pause" the loop using yield
             yield
-        print "The arm did not reach the position after"+str(_iterations)
+        print "The arm did not reach the position after :    "+str(self._iterations)
 
-    
+    #------------------------------------------------------------
     def timerEvent(self, event):
         # This is called every time the GUI is idle.
         if self._generator is None:
