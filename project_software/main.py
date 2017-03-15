@@ -329,8 +329,8 @@ class Form(QWidget):
             time.sleep(1)
 
             print "command to the servo motors"
-            pwm_m1.ChangeDutyCycle(self.m1_dc)
-            pwm_m2.ChangeDutyCycle(self.m2_dc)
+            self.pwm_m1.ChangeDutyCycle(self.m1_dc)
+            self.pwm_m2.ChangeDutyCycle(self.m2_dc)
             time.sleep(1)
 
             #"pause" the loop using yield
