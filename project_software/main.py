@@ -315,14 +315,8 @@ class Form(QWidget):
             if (sel._deviation < 5):
                 self.status_msg.setText("Success")
                 time.sleep(30)
-                '''
-                self.status_msg.setText("Stand By")
-                self.act_msg.setText("Please choose coordinates")
-                self._x_pos = 0
-                self.addx.setText('0')
-                self._y_pos = 0
-                self.addy.setText('0')
-                '''
+                self.stop_clicked
+                
                 break
             time.sleep(1)
 

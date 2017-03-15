@@ -133,7 +133,17 @@ Project: Camera Control XY Robotic Arm
 			        #Arm configuration
 			        self._deviation = 640.0 #The distance between the wirst to destination
 			        self._cover_radius = 640.0 #The distance between the wirst to the shoulder
-			        self._distance = 0 #the distance between the shoulder to the destination					 
+			        self._distance = 0 #the distance between the shoulder to the destination	
+
+15.3.17 20:00:Update main.py -	
+					print "check success"
+		            self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
+		            if (sel._deviation < 5):
+		                self.status_msg.setText("Success")
+		                time.sleep(30)
+		                self.stop_clicked
+		                
+		                break			 
 
 
 

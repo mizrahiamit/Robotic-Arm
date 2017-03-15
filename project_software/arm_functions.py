@@ -36,19 +36,3 @@ def cal_next_move(_deviation, _distance, _wrist_pos, _shoulder_pos, _x_pos, _y_p
 
 	return m1_change,m2_change 
 
-
-
-
-
-	while 1:
-		pwm_m1.ChangeDutyCycle(2.5)
-		pwm_m2.ChangeDutyCycle(12.5)
-		time.sleep(30)
-
-		pwm_m1.ChangeDutyCycle(7.5)
-		pwm_m2.ChangeDutyCycle(7.5)
-		time.sleep(30)
-
-		pwm_m1.ChangeDutyCycle(12.5)
-		pwm_m2.ChangeDutyCycle(2.5)
-		time.sleep(30)
