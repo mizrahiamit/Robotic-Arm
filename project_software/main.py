@@ -329,6 +329,8 @@ class Form(QWidget):
             time.sleep(1)
 
             print "command to the servo motors"
+            print "motor 1 duty cycle: ",self.m1_dc
+            print "motor 2 duty cycle: ",self.m2_dc
             self.pwm_m1.ChangeDutyCycle(self.m1_dc)
             self.pwm_m2.ChangeDutyCycle(self.m2_dc)
             time.sleep(1)
