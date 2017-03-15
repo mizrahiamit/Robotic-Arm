@@ -17,10 +17,12 @@ def check_coordinates(dest_coor,arm_src_coor,arm_radius):
     print "Checking if move is possible"
     distance = math.hypot(dest_coor[0] - arm_src_coor[0], dest_coor[1] - arm_src_coor[1])
     print "the distance is - ", distance
-    if (distance < arm_radius):
-        return True
+    # check if the destination is in the smaller than the radius of the arm 
+    # and on the right of the arm.
+    if (distance < arm_radius) and (dest_coor[0] > arm_src_coor[0]):
+        return distance
     else:
-        return False
+        return 600
         
     
 #------------------------------------------------------

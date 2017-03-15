@@ -109,5 +109,32 @@ Project: Camera Control XY Robotic Arm
 			    Update image_processing_functions.py-
 			    	x = circles[0][0][0]
         			y = circles[0][0][1]
+13.3.17 23:00:Update main_function.py -
+					 if (distance < arm_radius) and (dest_coor[0] > arm_src_coor[0]):
+
+14.3.17 22:00:Update main.py -
+					from arm_functions import *
+
+			        #Servo configuration
+			        IO.setwarnings(False)
+			        IO.setmode(IO.BCM)
+
+			        #Output ports
+			        IO.setup(14, IO.OUT)#Conrol Motor1
+			        IO.setup(18, IO.OUT)#Conrol Motor2
+
+			        #Freq=50Hz
+			        self.pwm_m1 = IO.PWM(14,50)
+			        self.pwm_m2 = IO.PWM(18,50)
+
+			        self.pwm_m1.start(7.5)#7.5% duty cycle - 90 degrees
+			        self.pwm_m2.start(12.5)#12.5% duty cycle - 180 degrees
+			        #------------------------------------------
+			        #Arm configuration
+			        self._deviation = 640.0 #The distance between the wirst to destination
+			        self._cover_radius = 640.0 #The distance between the wirst to the shoulder
+			        self._distance = 0 #the distance between the shoulder to the destination					 
+
+
 
 
