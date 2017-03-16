@@ -326,7 +326,7 @@ class Form(QWidget):
                     time.sleep(30)
                     self.stop_clicked("Success")
                     
-                    break
+                    
                 
                 #/////////////////////////////////////////////////
                 print "calculate arm next move"
