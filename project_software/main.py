@@ -23,6 +23,7 @@ class Form(QWidget):
         super(Form, self).__init__(parent, **kwargs)
 
         self._iterations = 20 #enter the number of MAX iterations
+        self._error_miss_detection = 3# Max iterations that the program don't detect the arm
         #set parameters for the timing the loop generator
         self._generator = None
         self._timerId = None
@@ -309,30 +310,33 @@ class Form(QWidget):
             print self._elbow_pos
             print self._wrist_pos
 
-
-            
-            #/////////////////////////////////////////////////
-            print "check success"
-            self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
-            if (self._deviation < 5):
-                self.status_msg.setText("Success")
-                time.sleep(30)
-                self.stop_clicked
+            if (self._shoulder_pos[0] == None) or (self._elbow_pos[0] == None) or (self._wrist_pos[0] == None):
+                self._error_miss_detection = self._error_miss_detection - 1
+                if (self._error_miss_detection == 0):
+                    self.stop_clicked
+            else:
+                #/////////////////////////////////////////////////
+                print "check success"
+                self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
+                if (self._deviation < 5):
+                    self.status_msg.setText("Success")
+                    time.sleep(30)
+                    self.stop_clicked
+                    
+                    break
                 
-                break
-            
-            #/////////////////////////////////////////////////
-            print "calculate arm next move"
-            m1_change,m2_change = cal_next_move(self._deviation, self._distance, self._wrist_pos, self._shoulder_pos, self._x_pos, self._y_pos)
-            self.m1_dc = self.m1_dc + m1_change
-            self.m2_dc = self.m2_dc + m2_change
-            
-            #/////////////////////////////////////////////////
-            print "command to the servo motors"
-            print "motor 1 duty cycle: ",self.m1_dc
-            print "motor 2 duty cycle: ",self.m2_dc
-            self.pwm_m1.ChangeDutyCycle(self.m1_dc)
-            self.pwm_m2.ChangeDutyCycle(self.m2_dc)
+                #/////////////////////////////////////////////////
+                print "calculate arm next move"
+                m1_change,m2_change = cal_next_move(self._deviation, self._distance, self._wrist_pos, self._shoulder_pos, self._x_pos, self._y_pos)
+                self.m1_dc = self.m1_dc + m1_change
+                self.m2_dc = self.m2_dc + m2_change
+                
+                #/////////////////////////////////////////////////
+                print "command to the servo motors"
+                print "motor 1 duty cycle: ",self.m1_dc
+                print "motor 2 duty cycle: ",self.m2_dc
+                self.pwm_m1.ChangeDutyCycle(self.m1_dc)
+                self.pwm_m2.ChangeDutyCycle(self.m2_dc)
             
 
             #"pause" the loop using yield
