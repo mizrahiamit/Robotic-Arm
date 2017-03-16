@@ -318,7 +318,7 @@ class Form(QWidget):
                 #/////////////////////////////////////////////////
                 print "check success"
                 self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
-                if (self._deviation < 5):
+                if (self._deviation < 10):
                     self.status_msg.setText("Success")
                     time.sleep(30)
                     self.stop_clicked
