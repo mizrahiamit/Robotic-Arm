@@ -331,6 +331,7 @@ class Form(QWidget):
                     print "calculate arm next move"
                     m1_change,m2_change = cal_next_move(self._distance, self._wrist_pos, self._shoulder_pos, self._x_pos, self._y_pos)
                     while (m1_change != 0) and (m2_change !=0):
+                        print "m1_change : ",m1_change," m2_change : ",m2_change
                         self.m1_dc = self.m1_dc + (m1_change/abs(m1_change))*0.05
                         self.m2_dc = self.m2_dc + (m2_change/abs(m2_change))*0.05
                         m1_change = m1_change - 0.05
