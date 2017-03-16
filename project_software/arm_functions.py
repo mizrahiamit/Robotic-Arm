@@ -17,13 +17,13 @@ def cal_next_move(_distance, _wrist_pos, _shoulder_pos, _x_pos, _y_pos):
 	cover_radius = math.hypot(_wrist_pos[0] - _shoulder_pos[0], _wrist_pos[1] - _shoulder_pos[1]) #The distance between the wirst to the shoulder
 	
 	if (cover_radius > (_distance+5)):
-		print cover_radius," > ",_deviation
+		print cover_radius," > ",_distance
 		m1_change =  0
 		m2_change = -0.5 # -9 degrees
 		print "motor2 -9 deg"
 
 	elif (cover_radius < (_distance-5)):
-		print cover_radius," < ",_deviation
+		print cover_radius," < ",_distance
 		m1_change =  0
 		m2_change = +0.25 # +9 degrees ********************************
 		print "motor2 +4.5 deg"
