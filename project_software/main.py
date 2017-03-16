@@ -348,7 +348,7 @@ class Form(QWidget):
                         print "motor 2 duty cycle: ",self.m2_dc
                         self.pwm_m1.ChangeDutyCycle(self.m1_dc)
                         self.pwm_m2.ChangeDutyCycle(self.m2_dc)
-                        time.sleep(0.5)
+                        time.sleep(1)
             
 
             #"pause" the loop using yield
