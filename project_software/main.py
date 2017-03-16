@@ -257,8 +257,8 @@ class Form(QWidget):
         
         print "Pause clicked"
     #------------------------------------------------------------
-    def stop_clicked(self):
-        self.status_msg.setText("Stoped")
+    def stop_clicked( _str="Stoped", self):
+        self.status_msg.setText(_str)
         self.start_btn.setEnabled(True)
         self.pause_btn.setEnabled(False)
         self.stop_btn.setEnabled(False)
@@ -316,15 +316,15 @@ class Form(QWidget):
                 print "error miss detection left : ",self._error_miss_detection
                 if (self._error_miss_detection == 0):
                     print "too many miss detection"
-                    self.stop_clicked
+                    self.stop_clicked("Error: Problem to detect arm")
             else:
                 #/////////////////////////////////////////////////
                 print "check success"
                 self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
                 if (self._deviation < 5):
-                    self.status_msg.setText("Success")
+                    #self.status_msg.setText("Success")
                     time.sleep(30)
-                    self.stop_clicked
+                    self.stop_clicked("Success")
                     
                     break
                 
