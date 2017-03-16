@@ -43,7 +43,7 @@ def get_color_mask(image,color):
     elif color == 'green':
         # define range of green color in HSV
         
-        lower_green = np.array([50,90,90])
+        lower_green = np.array([50,90,80])
         upper_green = np.array([70,255,255])
         '''
         #home
