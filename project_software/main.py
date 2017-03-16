@@ -22,7 +22,7 @@ class Form(QWidget):
     def __init__(self, parent=None, **kwargs):
         super(Form, self).__init__(parent, **kwargs)
 
-        self._iterations = 20 #enter the number of MAX iterations
+        self._iterations = 100 #enter the number of MAX iterations
         self._error_miss_detection = 3# Max iterations that the program don't detect the arm
         #set parameters for the timing the loop generator
         self._generator = None
