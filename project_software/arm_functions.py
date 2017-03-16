@@ -28,6 +28,7 @@ def cal_next_move(_deviation, _distance, _wrist_pos, _shoulder_pos, _x_pos, _y_p
 		m2_change = +0.3 # +9 degrees ********************************
 		print "motor2 +9 deg"
 	'''
+
 	elif (_wrist_pos[1] < (_y_pos-5)):
 		m1_change = +0.5 # +9 degrees
 		m2_change = 0
