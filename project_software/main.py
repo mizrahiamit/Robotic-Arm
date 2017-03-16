@@ -325,7 +325,7 @@ class Form(QWidget):
                     #self.status_msg.setText("Success")
                     time.sleep(30)
                     self.stop_clicked("Success")
-                    
+                    break
                     
                 
                 #/////////////////////////////////////////////////
@@ -344,7 +344,8 @@ class Form(QWidget):
 
             #"pause" the loop using yield
             yield
-        print "The arm did not reach the position after :    "+str(self._iterations)
+        if(self._deviation > 8):
+            print "The arm did not reach the position after :    "+str(self._iterations)
 
     #------------------------------------------------------------
     def timerEvent(self, event):
