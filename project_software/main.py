@@ -323,8 +323,9 @@ class Form(QWidget):
                 self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
                 if (self._deviation < 8):
                     #self.status_msg.setText("Success")
-                    time.sleep(30)
                     self.stop_clicked("Success")
+                    time.sleep(30)
+                    
                     break
                     
                 
@@ -346,7 +347,8 @@ class Form(QWidget):
             yield
         if(self._deviation > 8):
             print "The arm did not reach the position after :    "+str(self._iterations)
-
+        else:
+            self.stop_clicked("Success")
     #------------------------------------------------------------
     def timerEvent(self, event):
         # This is called every time the GUI is idle.
