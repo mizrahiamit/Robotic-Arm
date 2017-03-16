@@ -16,7 +16,6 @@ Description Camera control XY Robotic arm
 - Plan Block diagram to the software
 - function robotic_arm_algoritem runs in loop after start_clicked->obotic_arm_algoritem()
   and stop after stop btn or pause btn pressed
-- ------------------------Next-------------------------------------
 - Read new image every n sec and show on GUI
 - Detect arm position every iteration
 - Show target coordinate on the image
@@ -25,6 +24,7 @@ Description Camera control XY Robotic arm
 - Check for sucess
 - Add error after N max iterations
 - Check at the begining for arm recognition(3 points)
+- ------------------------Next-------------------------------------
 - Organize Code
 
 
