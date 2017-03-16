@@ -1,7 +1,7 @@
 '''
 Name: main.py
 Author: Mizrahi Amit
-Last update:15/3/17
+Last update:16/3/17
 Project: Camera Control XY Robotic Arm
 '''
 # Only needed for access to command line arguments
