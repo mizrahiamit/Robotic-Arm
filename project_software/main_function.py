@@ -34,10 +34,6 @@ def check_coordinates(dest_coor,arm_src_coor,arm_radius):
         
     
 #------------------------------------------------------
-def disable_arm():
-    #disabling pwm port, to the servo motors.
-    print "Disabling arm"
-    return True 
 #------------------------------------------------------
 def take_new_picture(_x_pos,_y_pos):
     # Create the in-memory stream

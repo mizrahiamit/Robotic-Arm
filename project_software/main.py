@@ -268,8 +268,8 @@ class Form(QWidget):
         self._x_pos = 0
         self.addy.setText('0')
         self._y_pos = 0
+        self._error_miss_detection = 3
         
-        disable_arm()
         #set parameters for the timing the loop generator
         # Stop any existing timer
         if self._timerId is not None:
@@ -311,8 +311,11 @@ class Form(QWidget):
             print self._wrist_pos
 
             if (self._shoulder_pos[0] == None) or (self._elbow_pos[0] == None) or (self._wrist_pos[0] == None):
+                print "miss detection"
                 self._error_miss_detection = self._error_miss_detection - 1
+                print "error miss detection left : ",self._error_miss_detection
                 if (self._error_miss_detection == 0):
+                    print "too many miss detection"
                     self.stop_clicked
             else:
                 #/////////////////////////////////////////////////
