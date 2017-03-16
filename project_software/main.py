@@ -22,7 +22,7 @@ class Form(QWidget):
     def __init__(self, parent=None, **kwargs):
         super(Form, self).__init__(parent, **kwargs)
 
-        self._iterations = 20 #enter the number of iterations
+        self._iterations = 20 #enter the number of MAX iterations
         #set parameters for the timing the loop generator
         self._generator = None
         self._timerId = None
@@ -294,15 +294,15 @@ class Form(QWidget):
         
         for a in range(self._iterations):
             a+=1
-
+            #/////////////////////////////////////////////////
             print "Take picture"
             take_new_picture(self._x_pos,self._y_pos)
-            time.sleep(1)
-
+            
+            #/////////////////////////////////////////////////
             print "show picture"
             self.l2.setPixmap(QtGui.QPixmap("Test Image.jpg"))
-            time.sleep(1)
-
+            
+            #/////////////////////////////////////////////////
             print "locate arm position"
             self._shoulder_pos , self._elbow_pos , self._wrist_pos = get_arm_position()
             print self._shoulder_pos
@@ -310,8 +310,8 @@ class Form(QWidget):
             print self._wrist_pos
 
 
-            time.sleep(1)
-
+            
+            #/////////////////////////////////////////////////
             print "check success"
             self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
             if (self._deviation < 5):
@@ -320,20 +320,20 @@ class Form(QWidget):
                 self.stop_clicked
                 
                 break
-            time.sleep(1)
-
+            
+            #/////////////////////////////////////////////////
             print "calculate arm next move"
             m1_change,m2_change = cal_next_move(self._deviation, self._distance, self._wrist_pos, self._shoulder_pos, self._x_pos, self._y_pos)
             self.m1_dc = self.m1_dc + m1_change
             self.m2_dc = self.m2_dc + m2_change
-            time.sleep(1)
-
+            
+            #/////////////////////////////////////////////////
             print "command to the servo motors"
             print "motor 1 duty cycle: ",self.m1_dc
             print "motor 2 duty cycle: ",self.m2_dc
             self.pwm_m1.ChangeDutyCycle(self.m1_dc)
             self.pwm_m2.ChangeDutyCycle(self.m2_dc)
-            time.sleep(1)
+            
 
             #"pause" the loop using yield
             yield
