@@ -1,3 +1,11 @@
+'''
+Name: main_functions.py
+Author: Mizrahi Amit
+Last update:16/3/17
+Project: Camera Control XY Robotic Arm
+'''
+
+
 import sys
 import numpy as np
 import cv2

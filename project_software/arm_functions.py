@@ -1,3 +1,11 @@
+'''
+Name: arm_functions.py
+Author: Mizrahi Amit
+Last update:16/3/17
+Project: Camera Control XY Robotic Arm
+'''
+
+
 import RPi.GPIO as IO
 import time
 import math
