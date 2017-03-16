@@ -323,32 +323,29 @@ class Form(QWidget):
                 self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
                 if (self._deviation < 8):
                     #self.status_msg.setText("Success")
-                    self.stop_clicked("Success")
+                    print "30 second time out"
                     time.sleep(30)
+                    self.stop_clicked("Success")
+                else:
+                    #/////////////////////////////////////////////////
+                    print "calculate arm next move"
+                    m1_change,m2_change = cal_next_move(self._distance, self._wrist_pos, self._shoulder_pos, self._x_pos, self._y_pos)
+                    self.m1_dc = self.m1_dc + m1_change
+                    self.m2_dc = self.m2_dc + m2_change
                     
-                    break
-                    
-                
-                #/////////////////////////////////////////////////
-                print "calculate arm next move"
-                m1_change,m2_change = cal_next_move(self._distance, self._wrist_pos, self._shoulder_pos, self._x_pos, self._y_pos)
-                self.m1_dc = self.m1_dc + m1_change
-                self.m2_dc = self.m2_dc + m2_change
-                
-                #/////////////////////////////////////////////////
-                print "command to the servo motors"
-                print "motor 1 duty cycle: ",self.m1_dc
-                print "motor 2 duty cycle: ",self.m2_dc
-                self.pwm_m1.ChangeDutyCycle(self.m1_dc)
-                self.pwm_m2.ChangeDutyCycle(self.m2_dc)
+                    #/////////////////////////////////////////////////
+                    print "command to the servo motors"
+                    print "motor 1 duty cycle: ",self.m1_dc
+                    print "motor 2 duty cycle: ",self.m2_dc
+                    self.pwm_m1.ChangeDutyCycle(self.m1_dc)
+                    self.pwm_m2.ChangeDutyCycle(self.m2_dc)
             
 
             #"pause" the loop using yield
             yield
         if(self._deviation > 8):
             print "The arm did not reach the position after :    "+str(self._iterations)
-        else:
-            self.stop_clicked("Success")
+        
     #------------------------------------------------------------
     def timerEvent(self, event):
         # This is called every time the GUI is idle.
