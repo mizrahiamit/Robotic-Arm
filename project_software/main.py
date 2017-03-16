@@ -257,7 +257,7 @@ class Form(QWidget):
         
         print "Pause clicked"
     #------------------------------------------------------------
-    def stop_clicked( _str="Stoped", self):
+    def stop_clicked( self, _str="Stoped"):
         self.status_msg.setText(_str)
         self.start_btn.setEnabled(True)
         self.pause_btn.setEnabled(False)
