@@ -13,7 +13,7 @@ from PyQt4.QtGui import (QApplication, QDialog, QWidget, QHBoxLayout, QLabel, QP
 
 import RPi.GPIO as IO
 
-from main_function import *
+from main_functions import *
 from image_processing_functions import *
 from arm_functions import *
 
