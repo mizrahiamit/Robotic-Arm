@@ -33,6 +33,10 @@ class Form(QWidget):
         self._elbow_pos = None,None
         self._wrist_pos = None,None
 
+        self._shoulder_miss=0
+        self._elbow_miss=0
+        self._wrist_miss=0
+
         self._arm_radius = 0.00
         #------------------------------------------
         #Target Coordinates
@@ -189,6 +193,14 @@ class Form(QWidget):
         print self._wrist_pos
         
         if (self._shoulder_pos==(None,None)) or (self._elbow_pos==(None,None)) or (self._wrist_pos==(None,None)):  
+            #-------------------------------
+            if (self._shoulder_pos==(None,None)):
+                self._shoulder_miss =self._shoulder_miss +1
+            if(self._elbow_pos==(None,None)):
+                self._elbow_miss =self._elbow_miss +1
+            if(self._wrist_pos==(None,None)):
+                self._wrist_miss =self._wrist_miss +1
+            #-------------------------------
             print "Robotic arm was not recognized "
             self.act_msg.setText("Please try again")
             self.status_msg.setText("Robotic arm was not recognized")
@@ -269,6 +281,10 @@ class Form(QWidget):
         self.addy.setText('0')
         self._y_pos = 0
         self._error_miss_detection = 10
+
+        self._shoulder_miss = 0
+        self._elbow_miss = 0
+        self._wrist_miss = 0
         
         #set parameters for the timing the loop generator
         # Stop any existing timer
@@ -316,6 +332,7 @@ class Form(QWidget):
                 print "error miss detection left : ",self._error_miss_detection
                 if (self._error_miss_detection == 0):
                     print "too many miss detection"
+                    print_miss(self._shoulder_miss,self._elbow_miss,self._wrist_miss)
                     self.stop_clicked("Error: Problem to detect arm")
             else:
                 #/////////////////////////////////////////////////
@@ -329,6 +346,9 @@ class Form(QWidget):
                     
                     t=10 - self._error_miss_detection
                     print "Number of miss detection : ",t
+                    print_miss(self._shoulder_miss,self._elbow_miss,self._wrist_miss)
+                    
+
                     print "30 second time out"
                     time.sleep(30)
                     self.stop_clicked("Success")
