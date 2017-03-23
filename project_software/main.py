@@ -321,8 +321,8 @@ class Form(QWidget):
                 #/////////////////////////////////////////////////
                 print "check success"
                 self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
-                a=100-self._iterations
-                print "The deviation is : ",self._deviation," Iteration number : ",a
+                iterations_no=100-self._iterations
+                print "The deviation is : ",self._deviation," Iteration number : ",iterations_no
                 if (self._deviation < 8):
                     #self.status_msg.setText("Success")
                     print "30 second time out"
