@@ -10,6 +10,12 @@ import math
 
 
 def cal_deviation(arm_wrist_pos, x_dest, y_dest):
+
+	print "arm_wrist_pos[0]  ",arm_wrist_pos[0]
+	print "x_dest  " ,x_dest
+	print "arm_wrist_pos[1]  ",arm_wrist_pos[1]
+	print "y_dest  ",y_dest
+	
 	return math.hypot(arm_wrist_pos[0] - x_dest, arm_wrist_pos[1] - y_dest)
 
 
