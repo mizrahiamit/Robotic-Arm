@@ -324,7 +324,10 @@ class Form(QWidget):
                 print "The deviation is : ",self._deviation
                 print " Iteration number : ",a
                 if (self._deviation < 8):
-                    #self.status_msg.setText("Success")
+                    self.status_msg.setText("Success")
+                    
+                    t=10 - self._error_miss_detection
+                    print "Number of miss detection : ",t
                     print "30 second time out"
                     time.sleep(30)
                     self.stop_clicked("Success")
@@ -335,11 +338,11 @@ class Form(QWidget):
                     #for x in xrange(5):# 0.25 change in duty cycle
                     while True:
                         print "m1_change : ",m1_change," m2_change : ",m2_change
-                        if(m1_change !=0):
+                        if(m1_change > 0.001):
                             signed = (m1_change/abs(m1_change))
                             self.m1_dc = self.m1_dc + signed*0.05
                             m1_change = m1_change - signed*0.05
-                        elif(m2_change !=0):
+                        elif(m2_change > 0.001):
                             signed = (m2_change/abs(m2_change))
                             self.m2_dc = self.m2_dc + signed*0.05
                             m2_change = m2_change - signed*0.05
