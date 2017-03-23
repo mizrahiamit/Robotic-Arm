@@ -338,11 +338,11 @@ class Form(QWidget):
                     #for x in xrange(5):# 0.25 change in duty cycle
                     while True:
                         print "m1_change : ",m1_change," m2_change : ",m2_change
-                        if(m1_change > 0.001):
+                        if(m1_change > 0.001) or (m1_change < -0.001):
                             signed = (m1_change/abs(m1_change))
                             self.m1_dc = self.m1_dc + signed*0.05
                             m1_change = m1_change - signed*0.05
-                        elif(m2_change > 0.001):
+                        elif(m2_change > 0.001) or (m2_change < -0.001):
                             signed = (m2_change/abs(m2_change))
                             self.m2_dc = self.m2_dc + signed*0.05
                             m2_change = m2_change - signed*0.05
