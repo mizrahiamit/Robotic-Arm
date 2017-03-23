@@ -323,6 +323,7 @@ class Form(QWidget):
                 self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
                 print "The deviation is : ",self._deviation
                 print " Iteration number : ",a
+                time.sleep(2)#@@@@@@@@@@@@@@@---Delete
                 if (self._deviation < 8):
                     self.status_msg.setText("Success")
                     
