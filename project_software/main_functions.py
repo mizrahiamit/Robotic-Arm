@@ -52,7 +52,11 @@ def take_new_picture(_x_pos,_y_pos):
         
     return True
 
-
+def print_miss(_shoulder_miss,_elbow_miss,_wrist_miss):
+    print "Miss detect yellow circel : ",_shoulder_miss
+    print "Miss detect blue circel : ",_elbow_miss
+    print "Miss detect green circel : ",_wrist_miss
+    return True
 
 
 
