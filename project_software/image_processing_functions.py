@@ -47,8 +47,8 @@ def get_color_mask(image,color):
         upper_green = np.array([70,255,255])
         '''
         #home
-        lower_green = np.array([40,50,50])
-        upper_green = np.array([60,255,255])
+        lower_green = np.array([50,90,70])
+        upper_green = np.array([75,255,255])
         
         
         # Threshold the HSV image to get only green colors
