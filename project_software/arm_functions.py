@@ -30,24 +30,24 @@ def cal_next_move(_distance, _wrist_pos, _shoulder_pos, _x_pos, _y_pos):
 
 	elif (_wrist_pos[1] < (_y_pos-5)):
 		print _wrist_pos[1]," < ",_y_pos
-		m1_change = -0.25 # -4.5 degrees
+		m1_change = -0.10 # -4.5 degrees
 		m2_change = 0
 		print "motor1 -4.5 deg"
 
 	elif (_wrist_pos[1] > (_y_pos+5)):
 		print _wrist_pos[1]," > ",_y_pos
-		m1_change = +0.25 # +4.5 degrees
+		m1_change = +0.10 # +4.5 degrees
 		m2_change = 0
 		print "motor1 +4.5 deg"
 
 	elif (_wrist_pos[0] < _x_pos-5):
 		print _wrist_pos[0]," < ",_x_pos
-		m1_change = -0.25 # - 4.5 degrees
+		m1_change = -0.10 # - 4.5 degrees
 		m2_change = 0
 		print "motor1 -4.5 deg"
 	else:
 		print _wrist_pos[0]," > ",_x_pos
-		m1_change = +0.25 # +4.5 degrees
+		m1_change = +0.10 # +4.5 degrees
 		m2_change = 0
 		print "motor1 +4.5 deg"
 
