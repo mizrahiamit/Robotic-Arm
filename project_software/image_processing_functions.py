@@ -34,8 +34,8 @@ def get_color_mask(image,color):
         upper_blue = np.array([115,255,255])
         '''
         #home
-        lower_blue = np.array([110,90,50])
-        upper_blue = np.array([130,255,255])
+        lower_blue = np.array([95,130,120])
+        upper_blue = np.array([120,255,255])
         
         
         # Threshold the HSV image to get only blue colors
@@ -47,7 +47,7 @@ def get_color_mask(image,color):
         upper_green = np.array([70,255,255])
         '''
         #home
-        lower_green = np.array([50,90,70])
+        lower_green = np.array([45,90,200])
         upper_green = np.array([75,255,255])
         
         
@@ -60,8 +60,8 @@ def get_color_mask(image,color):
         upper_yellow = np.array([40,255,255])
         '''
         #home
-        lower_yellow = np.array([20,230,100])
-        upper_yellow = np.array([30,255,255])
+        lower_yellow = np.array([20,140,200])
+        upper_yellow = np.array([40,255,255])
         
         
         # Threshold the HSV image to get only yellow colors
@@ -76,7 +76,7 @@ def get_color_mask(image,color):
 def return_circles_values(img):
     img = cv2.medianBlur(img,5)
 
-    circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,2,100, param1=35,param2=20,minRadius=5,maxRadius=50)
+    circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,2,200, param1=35,param2=20,minRadius=5,maxRadius=50)
     return circles
 #------------------------------------------------------
 def detect_circle_by_color(color,image):
