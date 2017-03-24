@@ -328,6 +328,14 @@ class Form(QWidget):
 
             if (self._shoulder_pos[0] == None) or (self._elbow_pos[0] == None) or (self._wrist_pos[0] == None):
                 print "miss detection"
+
+                if (self._shoulder_pos[0] == None):
+                    self._shoulder_miss = self._shoulder_miss+1
+                if (self._elbow_pos[0] == None):
+                    self._elbow_miss = self._elbow_miss+1
+                if (self._wrist_pos[0] == None):
+                    self._wrist_miss = self._wrist_miss+1
+
                 self._error_miss_detection = self._error_miss_detection - 1
                 print "error miss detection left : ",self._error_miss_detection
                 if (self._error_miss_detection == 0):
