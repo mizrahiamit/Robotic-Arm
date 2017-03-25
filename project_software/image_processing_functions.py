@@ -1,7 +1,7 @@
 '''
 Name: image_processing_functions.py
 Author: Mizrahi Amit
-Last update: 25/3/17
+Last update:25/3/17
 Project: Camera Control XY Robotic Arm
 '''
 import sys
@@ -47,7 +47,7 @@ def get_color_mask(image,color):
         upper_green = np.array([70,255,255])
         '''
         #home
-        lower_green = np.array([40,150,60])
+        lower_green = np.array([40,90,100])
         upper_green = np.array([60,255,255])
         
         
