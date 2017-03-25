@@ -292,7 +292,7 @@ class Form(QWidget):
             self.killTimer(self._timerId)
         self._generator = None
         self._timerId = None
-
+        print_miss(self._shoulder_miss,self._elbow_miss,self._wrist_miss)
         print "Stop clicked"
 
     #------------------------------------------------------------
@@ -370,13 +370,15 @@ class Form(QWidget):
                         if(m1_change > 0.001) or (m1_change < -0.001):
                             signed = (m1_change/abs(m1_change))
                             self.m1_dc = self.m1_dc + signed*0.05
+                            print "m1_change : ",m1_change
                             m1_change = m1_change - signed*0.05
-                            print "m1_change : ",m1_change," m2_change : ",m2_change
+                            
                         elif(m2_change > 0.001) or (m2_change < -0.001):
                             signed = (m2_change/abs(m2_change))
                             self.m2_dc = self.m2_dc + signed*0.05
+                            print " m2_change : ",m2_change
                             m2_change = m2_change - signed*0.05
-                            print "m1_change : ",m1_change," m2_change : ",m2_change
+                            
                         else:
                             break
                         
