@@ -1,7 +1,7 @@
 '''
 Name: image_processing_functions.py
 Author: Mizrahi Amit
-Last update:25/3/17
+Last update: 25/3/17
 Project: Camera Control XY Robotic Arm
 '''
 import sys
@@ -35,7 +35,7 @@ def get_color_mask(image,color):
         '''
         #home
         lower_blue = np.array([120,30,50])
-        upper_blue = np.array([140,255,255])
+        upper_blue = np.array([150,255,255])
         
         
         # Threshold the HSV image to get only blue colors
