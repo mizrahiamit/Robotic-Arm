@@ -185,9 +185,9 @@ class Form(QWidget):
     #------------------------------------------------------------
     def check_clicked(self):
         print "taking new picture"
-        take_new_picture(0,0)
+        image = take_new_picture(0,0)
         print "get arm position"
-        self._shoulder_pos,self._elbow_pos,self._wrist_pos=get_arm_position()
+        self._shoulder_pos,self._elbow_pos,self._wrist_pos=get_arm_position(image)
         print self._shoulder_pos
         print self._elbow_pos
         print self._wrist_pos
