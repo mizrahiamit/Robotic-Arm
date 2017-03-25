@@ -25,10 +25,21 @@ def cal_next_move(_distance, _wrist_pos, _shoulder_pos, _x_pos, _y_pos):
 	if (cover_radius > (_distance+15)):
 		print cover_radius," > ",_distance
 		m1_change =  0
-		m2_change = -0.5 
+		m2_change = -1 
 		print "motor2 -9 deg"
 
 	elif (cover_radius < (_distance-15)):
+		print cover_radius," < ",_distance
+		m1_change =  0
+		m2_change = +1 
+		print "motor2 +9 deg"
+	elif (cover_radius > (_distance+5)):
+		print cover_radius," > ",_distance
+		m1_change =  0
+		m2_change = -0.5 
+		print "motor2 -9 deg"
+
+	elif (cover_radius < (_distance-5)):
 		print cover_radius," < ",_distance
 		m1_change =  0
 		m2_change = +0.5 
@@ -53,7 +64,7 @@ def cal_next_move(_distance, _wrist_pos, _shoulder_pos, _x_pos, _y_pos):
 		print "motor1 -4.5 deg"
 	else:
 		print _wrist_pos[0]," > ",_x_pos
-		m1_change = +0.10 # +4.5 degrees
+		m1_change = +0.05 # +4.5 degrees
 		m2_change = 0
 		print "motor1 +4.5 deg"
 
