@@ -193,14 +193,7 @@ class Form(QWidget):
         print self._wrist_pos
         
         if (self._shoulder_pos==(None,None)) or (self._elbow_pos==(None,None)) or (self._wrist_pos==(None,None)):  
-            #-------------------------------
-            if (self._shoulder_pos==(None,None)):
-                self._shoulder_miss =self._shoulder_miss +1
-            if(self._elbow_pos==(None,None)):
-                self._elbow_miss =self._elbow_miss +1
-            if(self._wrist_pos==(None,None)):
-                self._wrist_miss =self._wrist_miss +1
-            #-------------------------------
+
             print "Robotic arm was not recognized "
             self.act_msg.setText("Please try again")
             self.status_msg.setText("Robotic arm was not recognized")
@@ -282,6 +275,7 @@ class Form(QWidget):
         self._y_pos = 0
         self._error_miss_detection = 10
 
+        print_miss(self._shoulder_miss,self._elbow_miss,self._wrist_miss)
         self._shoulder_miss = 0
         self._elbow_miss = 0
         self._wrist_miss = 0
@@ -292,7 +286,7 @@ class Form(QWidget):
             self.killTimer(self._timerId)
         self._generator = None
         self._timerId = None
-        print_miss(self._shoulder_miss,self._elbow_miss,self._wrist_miss)
+        
         print "Stop clicked"
 
     #------------------------------------------------------------
@@ -355,8 +349,8 @@ class Form(QWidget):
                     self.status_msg.setText("Success")
                     
                     t=10 - self._error_miss_detection
-                    print "Number of miss detection : ",t
-                    print_miss(self._shoulder_miss,self._elbow_miss,self._wrist_miss)
+                    
+                    
                     
 
                     print "30 second time out"
