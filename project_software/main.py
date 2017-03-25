@@ -1,7 +1,7 @@
 '''
 Name: main.py
 Author: Mizrahi Amit
-Last update:16/3/17
+Last update:25/3/17
 Project: Camera Control XY Robotic Arm
 '''
 # Only needed for access to command line arguments
@@ -23,7 +23,7 @@ class Form(QWidget):
         super(Form, self).__init__(parent, **kwargs)
 
         self._iterations = 100 #enter the number of MAX iterations
-        self._error_miss_detection = 10# Max iterations that the program don't detect the arm
+        self._error_miss_detection = 20# Max iterations that the program don't detect the arm
         #set parameters for the timing the loop generator
         self._generator = None
         self._timerId = None
