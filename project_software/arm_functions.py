@@ -33,7 +33,7 @@ def cal_next_move(_distance, _wrist_pos, _shoulder_pos, _x_pos, _y_pos):
 		m1_change =  0
 		m2_change = +1 
 		print "motor2 +9 deg"
-	elif (cover_radius > (_distance+1-)):
+	elif (cover_radius > (_distance+10)):
 		print cover_radius," > ",_distance
 		m1_change =  0
 		m2_change = -0.5 
