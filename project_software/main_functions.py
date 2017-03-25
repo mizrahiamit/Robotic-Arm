@@ -43,6 +43,7 @@ def take_new_picture(_x_pos,_y_pos):
     data = np.fromstring(stream.getvalue(), dtype=np.uint8)
     # "Decode" the image from the array, preserving colour
     image = cv2.imdecode(data, 1)
+    newImage = image.copy()
     # OpenCV returns an array with data in BGR order. If you want RGB instead
     if (_x_pos!=0) or (_y_pos!=0):
         cv2.line(image,(_x_pos+10,_y_pos),(_x_pos-10,_y_pos),(0,0,255),1)
@@ -50,7 +51,7 @@ def take_new_picture(_x_pos,_y_pos):
 
     cv2.imwrite("Test Image.jpg",image)
         
-    return True
+    return newImage
 
 def print_miss(_shoulder_miss,_elbow_miss,_wrist_miss):
     print "Miss detect yellow circel : ",_shoulder_miss

@@ -92,9 +92,9 @@ def detect_circle_by_color(color,image):
     return x,y
 
 #------------------------------------------------------
-def get_arm_position():
+def get_arm_position(image):
 
-    image = cv2.imread('Test Image.jpg')
+    #image = cv2.imread('Test Image.jpg')
 
     pos1 = detect_circle_by_color('yellow',image)#Shoulder
     

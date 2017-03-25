@@ -307,7 +307,7 @@ class Form(QWidget):
             a+=1
             #/////////////////////////////////////////////////
             print "Take picture"
-            take_new_picture(self._x_pos,self._y_pos)
+            image = take_new_picture(self._x_pos,self._y_pos)
             
             #/////////////////////////////////////////////////
             print "show picture"
@@ -315,7 +315,7 @@ class Form(QWidget):
             
             #/////////////////////////////////////////////////
             print "locate arm position"
-            self._shoulder_pos , self._elbow_pos , self._wrist_pos = get_arm_position()
+            self._shoulder_pos , self._elbow_pos , self._wrist_pos = get_arm_position(image)
             print self._shoulder_pos
             print self._elbow_pos
             print self._wrist_pos
