@@ -338,6 +338,8 @@ class Form(QWidget):
 
                 self._error_miss_detection = self._error_miss_detection - 1
                 print "error miss detection left : ",self._error_miss_detection
+                image = cv2.imread('Test Image.jpg')
+                cv2.imwrite("miis Image.jpg",image)
                 if (self._error_miss_detection == 0):
                     print "too many miss detection"
                     print_miss(self._shoulder_miss,self._elbow_miss,self._wrist_miss)
