@@ -47,7 +47,7 @@ def get_color_mask(image,color):
         upper_green = np.array([70,255,255])
         '''
         #home
-        lower_green = np.array([45,60,60])
+        lower_green = np.array([45,55,60])
         upper_green = np.array([70,255,255])
         
         
