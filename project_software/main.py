@@ -29,6 +29,8 @@ class Form(QWidget):
         self._timerId = None
         #------------------------------------------
         #Arm position parameters 
+        self.prev_shoulder_pos = 0,0
+
         self._shoulder_pos = None,None
         self._elbow_pos = None,None
         self._wrist_pos = None,None
@@ -320,6 +322,8 @@ class Form(QWidget):
             print self._elbow_pos
             print self._wrist_pos
 
+            self.prev_shoulder_pos = self._self._shoulder_pos #for checking setup in next iteration
+
             if (self._shoulder_pos[0] == None) or (self._elbow_pos[0] == None) or (self._wrist_pos[0] == None):
                 print "miss detection"
 
@@ -357,11 +361,12 @@ class Form(QWidget):
                     print "Checking if setup moved"
                     # Checking if shoulder position has been changed 
                     # during the arm movement.
-                    setup_x_disturation = abs(self._shoulder_pos[0]-self._x_pos)
-                    setup_y_disturation = abs(self._shoulder_pos[1]-self._y_pos)
-                    print 'setup_x_disturation ',setup_x_disturation
-                    print 'setup_y_disturation  ',setup_y_disturation
-                    if (setup_x_disturation > 5) or (setup_y_disturation >5):
+                    if a > 1:
+                        setup_x_disturation = abs(self._shoulder_pos[0]-self.prev_shoulder_pos[0])
+                        setup_y_disturation = abs(self._shoulder_pos[1]-self.prev_shoulder_pos[1])
+                        print 'setup_x_disturation ',setup_x_disturation
+                        print 'setup_y_disturation  ',setup_y_disturation
+                    if (setup_x_disturation > 5) or (setup_y_disturation >5) and (a > 1):
                         self.act_msg.setText("Please reset the program")
                         self.stop_clicked("Setup has been changed")
                         
