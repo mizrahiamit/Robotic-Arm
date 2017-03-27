@@ -39,19 +39,7 @@ def cal_next_move(_distance, _wrist_pos, _shoulder_pos, _x_pos, _y_pos):
 		else: 
 			m2_change = +0.5 
 		m1_change =  0	
-'''
-	elif (cover_radius > (_distance+10)):
-		print "cover_radius > distance"
-		print cover_radius," > ",_distance
-		m1_change =  0
-		m2_change = -0.5 	
 
-	elif (cover_radius < (_distance-10)):
-		print "cover_radius < distance"
-		print cover_radius," < ",_distance
-		m1_change =  0
-		m2_change = +0.5 
-'''		
 	elif (_wrist_pos[1] < (_y_pos-5)):
 		print "wrist[y] < y_pos"
 		print _wrist_pos[1]," < ",_y_pos
@@ -69,20 +57,7 @@ def cal_next_move(_distance, _wrist_pos, _shoulder_pos, _x_pos, _y_pos):
 		else:
 			m1_change = +0.1  
 		m2_change = 0
-'''
-	elif (_wrist_pos[1] < (_y_pos-5)):
-		print "wrist[y] < y_pos"
-		print _wrist_pos[1]," < ",_y_pos
-		m1_change = -0.10 # -4.5 degrees
-		m2_change = 0
-		
-	elif (_wrist_pos[1] > (_y_pos+5)):
-		print "wrist[y] > y_pos"
-		print _wrist_pos[1]," > ",_y_pos
-		m1_change = +0.10 # +4.5 degrees
-		m2_change = 0
-		
-'''
+
 	elif (_wrist_pos[0] < _x_pos-5):
 		print "wrist[x] < x_pos"
 		print _wrist_pos[0]," < ",_x_pos
