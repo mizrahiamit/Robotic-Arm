@@ -49,25 +49,25 @@ def cal_next_move(_distance, _wrist_pos, _shoulder_pos, _x_pos, _y_pos):
 	elif (_wrist_pos[1] < (_y_pos-15)):
 		print "wrist[y] < y_pos"
 		print _wrist_pos[1]," < ",_y_pos
-		m1_change = +0.5 # -4.5 degrees
+		m1_change = -0.5 # -4.5 degrees
 		m2_change = 0
 		
 	elif (_wrist_pos[1] > (_y_pos+15)):
 		print "wrist[y] > y_pos"
 		print _wrist_pos[1]," > ",_y_pos
-		m1_change = -0.5 # +4.5 degrees
+		m1_change = +0.5 # +4.5 degrees
 		m2_change = 0
 
 	elif (_wrist_pos[1] < (_y_pos-5)):
 		print "wrist[y] < y_pos"
 		print _wrist_pos[1]," < ",_y_pos
-		m1_change = +0.10 # -4.5 degrees
+		m1_change = -0.10 # -4.5 degrees
 		m2_change = 0
 		
 	elif (_wrist_pos[1] > (_y_pos+5)):
 		print "wrist[y] > y_pos"
 		print _wrist_pos[1]," > ",_y_pos
-		m1_change = -0.10 # +4.5 degrees
+		m1_change = +0.10 # +4.5 degrees
 		m2_change = 0
 		
 
