@@ -357,8 +357,8 @@ class Form(QWidget):
                     print "Checking if setup moved"
                     # Checking if shoulder position has been changed 
                     # during the arm movement.
-                    setup_x_disturation = abs(self._shoulder_pos[0]-_x_pos)
-                    setup_y_disturation = abs(self._shoulder_pos[1]-_y_pos)
+                    setup_x_disturation = abs(self._shoulder_pos[0]-self._x_pos)
+                    setup_y_disturation = abs(self._shoulder_pos[1]-self._y_pos)
                     if (setup_x_disturation > 5) or (setup_y_disturation >5):
                         self.act_msg.setText("Please reset the program")
                         self.stop_clicked("Setup has been changed")
