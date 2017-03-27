@@ -30,6 +30,7 @@ class Form(QWidget):
         #------------------------------------------
         #Arm position parameters 
         self.prev_shoulder_pos = 0,0
+        self.check_setup = False
 
         self._shoulder_pos = None,None
         self._elbow_pos = None,None
@@ -367,11 +368,12 @@ class Form(QWidget):
                     setup_y_disturation = abs(self._shoulder_pos[1]-self.prev_shoulder_pos[1])
                     print 'setup_x_disturation ',setup_x_disturation
                     print 'setup_y_disturation  ',setup_y_disturation
-                    if ((setup_x_disturation > 5) or (setup_y_disturation >5)) and (a > 1):
+                    if ((setup_x_disturation > 5) or (setup_y_disturation >5)) and (self.check_setup):
                         self.stop_clicked("Setup has been changed,Please reset the program!!!")
                         
                     else:
                         self.prev_shoulder_pos = self._shoulder_pos #for checking setup in next iteration
+                        self.check_setup = True
                         #/////////////////////////////////////////////////
                         print "calculate arm next move"
                         m1_change,m2_change = cal_next_move(self._distance, self._wrist_pos, self._shoulder_pos, self._x_pos, self._y_pos)
@@ -401,6 +403,7 @@ class Form(QWidget):
                             self.pwm_m1.ChangeDutyCycle(self.m1_dc)
                             self.pwm_m2.ChangeDutyCycle(self.m2_dc)
                             time.sleep(1)
+
             
 
             #"pause" the loop using yield
