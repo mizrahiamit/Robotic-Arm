@@ -294,11 +294,12 @@ class Form(QWidget):
     #------------------------------------------------------------
     #------------------------------------------------------------
     def getPos(self, event):
-        self._x_pos = event.pos().x()
-        self.addx.setText(str(self._x_pos))
-        self._y_pos = event.pos().y()
-        self.addy.setText(str(self._y_pos))
-        print ("x = ", self._x_pos,"y = ", self._y_pos)
+        if self.start_btn.isEnabled():
+            self._x_pos = event.pos().x()
+            self.addx.setText(str(self._x_pos))
+            self._y_pos = event.pos().y()
+            self.addy.setText(str(self._y_pos))
+            print ("x = ", self._x_pos,"y = ", self._y_pos)
 
     #------------------------------------------------------------
     #------------------------------------------------------------
@@ -367,11 +368,8 @@ class Form(QWidget):
                     print 'setup_x_disturation ',setup_x_disturation
                     print 'setup_y_disturation  ',setup_y_disturation
                     if ((setup_x_disturation > 5) or (setup_y_disturation >5)) and (a > 1):
-                        self.act_msg.setText("Please reset the program")
-                        self.stop_clicked("Setup has been changed")
+                        self.stop_clicked("Setup has been changed,Please reset the program!!!")
                         
-
-
                     else:
                         self.prev_shoulder_pos = self._shoulder_pos #for checking setup in next iteration
                         #/////////////////////////////////////////////////
