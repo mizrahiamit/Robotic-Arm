@@ -344,7 +344,6 @@ class Form(QWidget):
                 self._deviation = cal_deviation(self._wrist_pos, self._x_pos, self._y_pos)
                 print "The deviation is : ",self._deviation
                 print " Iteration number : ",a
-                time.sleep(2)#@@@@@@@@@@@@@@@---Delete
                 if (self._deviation < 10):
                     self.status_msg.setText("Success")
                     
@@ -353,7 +352,7 @@ class Form(QWidget):
                     print "10 second time out"
                     time.sleep(10)
                     self.stop_clicked("Success")
-                elif:
+                else:
                     #/////////////////////////////////////////////////
                     print "Checking if setup moved"
                     # Checking if shoulder position has been changed 
@@ -363,38 +362,39 @@ class Form(QWidget):
                     if (setup_x_disturation > 5) or (setup_y_disturation >5):
                         self.act_msg.setText("Please reset the program")
                         self.stop_clicked("Setup has been changed")
+                        break
 
 
-                else:
-                    #/////////////////////////////////////////////////
-                    print "calculate arm next move"
-                    m1_change,m2_change = cal_next_move(self._distance, self._wrist_pos, self._shoulder_pos, self._x_pos, self._y_pos)
-                    #for x in xrange(5):# 0.25 change in duty cycle
-                    while True:
-                        
-                        if(m1_change > 0.001) or (m1_change < -0.001):
-                            signed = (m1_change/abs(m1_change))
-                            self.m1_dc = self.m1_dc + signed*0.05
-                            print "m1_change : ",m1_change
-                            m1_change = m1_change - signed*0.05
-                            
-                        elif(m2_change > 0.001) or (m2_change < -0.001):
-                            signed = (m2_change/abs(m2_change))
-                            self.m2_dc = self.m2_dc + signed*0.05
-                            print " m2_change : ",m2_change
-                            m2_change = m2_change - signed*0.05
-                            
-                        else:
-                            break
-                        
-                        
+                    else:
                         #/////////////////////////////////////////////////
-                        print "command to the servo motors"
-                        print "motor 1 duty cycle: ",self.m1_dc
-                        print "motor 2 duty cycle: ",self.m2_dc
-                        self.pwm_m1.ChangeDutyCycle(self.m1_dc)
-                        self.pwm_m2.ChangeDutyCycle(self.m2_dc)
-                        time.sleep(1)
+                        print "calculate arm next move"
+                        m1_change,m2_change = cal_next_move(self._distance, self._wrist_pos, self._shoulder_pos, self._x_pos, self._y_pos)
+                        #for x in xrange(5):# 0.25 change in duty cycle
+                        while True:
+                            
+                            if(m1_change > 0.001) or (m1_change < -0.001):
+                                signed = (m1_change/abs(m1_change))
+                                self.m1_dc = self.m1_dc + signed*0.05
+                                print "m1_change : ",m1_change
+                                m1_change = m1_change - signed*0.05
+                                
+                            elif(m2_change > 0.001) or (m2_change < -0.001):
+                                signed = (m2_change/abs(m2_change))
+                                self.m2_dc = self.m2_dc + signed*0.05
+                                print " m2_change : ",m2_change
+                                m2_change = m2_change - signed*0.05
+                                
+                            else:
+                                break
+                            
+                            
+                            #/////////////////////////////////////////////////
+                            print "command to the servo motors"
+                            print "motor 1 duty cycle: ",self.m1_dc
+                            print "motor 2 duty cycle: ",self.m2_dc
+                            self.pwm_m1.ChangeDutyCycle(self.m1_dc)
+                            self.pwm_m2.ChangeDutyCycle(self.m2_dc)
+                            time.sleep(1)
             
 
             #"pause" the loop using yield
