@@ -349,13 +349,22 @@ class Form(QWidget):
                     self.status_msg.setText("Success")
                     
                     t=10 - self._error_miss_detection
-                    
-                    
-                    
 
-                    print "30 second time out"
-                    time.sleep(30)
+                    print "10 second time out"
+                    time.sleep(10)
                     self.stop_clicked("Success")
+                elif:
+                    #/////////////////////////////////////////////////
+                    print "Checking if setup moved"
+                    # Checking if shoulder position has been changed 
+                    # during the arm movement.
+                    setup_x_disturation = abs(self._shoulder_pos[0]-_x_pos)
+                    setup_y_disturation = abs(self._shoulder_pos[1]-_y_pos)
+                    if (setup_x_disturation > 5) or (setup_y_disturation >5):
+                        self.act_msg.setText("Please reset the program")
+                        self.stop_clicked("Setup has been changed")
+
+
                 else:
                     #/////////////////////////////////////////////////
                     print "calculate arm next move"
