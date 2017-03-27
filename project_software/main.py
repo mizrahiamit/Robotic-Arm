@@ -322,7 +322,7 @@ class Form(QWidget):
             print self._elbow_pos
             print self._wrist_pos
 
-            self.prev_shoulder_pos = self._self._shoulder_pos #for checking setup in next iteration
+            self.prev_shoulder_pos = self._shoulder_pos #for checking setup in next iteration
 
             if (self._shoulder_pos[0] == None) or (self._elbow_pos[0] == None) or (self._wrist_pos[0] == None):
                 print "miss detection"
