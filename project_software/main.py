@@ -1,7 +1,7 @@
 '''
 Name: main.py
 Author: Mizrahi Amit
-Last update:25/3/17
+Last update:27/3/17
 Project: Camera Control XY Robotic Arm
 '''
 # Only needed for access to command line arguments
@@ -345,7 +345,7 @@ class Form(QWidget):
                 print "The deviation is : ",self._deviation
                 print " Iteration number : ",a
                 time.sleep(2)#@@@@@@@@@@@@@@@---Delete
-                if (self._deviation < 8):
+                if (self._deviation < 10):
                     self.status_msg.setText("Success")
                     
                     t=10 - self._error_miss_detection
