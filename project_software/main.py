@@ -22,7 +22,7 @@ class Form(QWidget):
     def __init__(self, parent=None, **kwargs):
         super(Form, self).__init__(parent, **kwargs)
 
-        self.cam =cv2.VideoCapture(0)
+        
 
         self._iterations = 100 #enter the number of MAX iterations
         self._error_miss_detection = 20# Max iterations that the program don't detect the arm
@@ -190,7 +190,7 @@ class Form(QWidget):
     #------------------------------------------------------------
     def check_clicked(self):
         print "taking new picture"
-        image = take_new_picture(0,0,self.cam)
+        image = take_new_picture(0,0)
         print "get arm position"
         self._shoulder_pos,self._elbow_pos,self._wrist_pos=get_arm_position(image)
         print self._shoulder_pos
@@ -313,7 +313,7 @@ class Form(QWidget):
             a+=1
             #/////////////////////////////////////////////////
             print "Take picture"
-            image = take_new_picture(self._x_pos,self._y_pos,self.cam)
+            image = take_new_picture(self._x_pos,self._y_pos)
             
             #/////////////////////////////////////////////////
             print "show picture"

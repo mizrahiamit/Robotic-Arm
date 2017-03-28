@@ -31,9 +31,9 @@ def check_coordinates(dest_coor,arm_src_coor,arm_radius):
     
 
 #------------------------------------------------------
-def take_new_picture(_x_pos,_y_pos,cam):
+def take_new_picture(_x_pos,_y_pos):
     # Create the in-memory stream
-    '''
+    
     stream = io.BytesIO()
     with picamera.PiCamera() as camera:
         camera.resolution = (640, 480)
@@ -44,19 +44,16 @@ def take_new_picture(_x_pos,_y_pos,cam):
     data = np.fromstring(stream.getvalue(), dtype=np.uint8)
     # "Decode" the image from the array, preserving colour
     image = cv2.imdecode(data, 1)
-    '''
-    image = cam.read()[1]
     
-    
+
     # OpenCV returns an array with data in BGR order. If you want RGB instead
     if (_x_pos!=0) or (_y_pos!=0):
         cv2.line(image,(_x_pos+10,_y_pos),(_x_pos-10,_y_pos),(0,0,255),1)
         cv2.line(image,(_x_pos,_y_pos+10),(_x_pos,_y_pos-10),(0,0,255),1)
 
     cv2.imwrite("Test Image.jpg",image)
-    
-    return image    
-    #return newImage
+      
+    return newImage
 
 def print_miss(_shoulder_miss,_elbow_miss,_wrist_miss):
     print "Miss detect yellow circel : ",_shoulder_miss
