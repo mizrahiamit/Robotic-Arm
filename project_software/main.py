@@ -22,6 +22,8 @@ class Form(QWidget):
     def __init__(self, parent=None, **kwargs):
         super(Form, self).__init__(parent, **kwargs)
 
+        self.cam =cv2.VideoCapture(0)
+
         self._iterations = 100 #enter the number of MAX iterations
         self._error_miss_detection = 20# Max iterations that the program don't detect the arm
         #set parameters for the timing the loop generator
@@ -311,7 +313,7 @@ class Form(QWidget):
             a+=1
             #/////////////////////////////////////////////////
             print "Take picture"
-            image = take_new_picture(self._x_pos,self._y_pos)
+            image = take_new_picture(self._x_pos,self._y_pos,self.cam)
             
             #/////////////////////////////////////////////////
             print "show picture"
