@@ -44,7 +44,7 @@ def take_new_picture(_x_pos,_y_pos):
     data = np.fromstring(stream.getvalue(), dtype=np.uint8)
     # "Decode" the image from the array, preserving colour
     image = cv2.imdecode(data, 1)
-    
+    newImage =image.copy()
 
     # OpenCV returns an array with data in BGR order. If you want RGB instead
     if (_x_pos!=0) or (_y_pos!=0):
